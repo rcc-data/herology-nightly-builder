@@ -1,0 +1,26 @@
+# Secrets: never commit
+gh_token.txt
+*.command
+config.json
+*.pem
+
+# Nightly inputs (re-pulled from the APIs every run)
+meta-performance/_api_*.json
+meta-performance/_api_raw_*.txt
+meta-performance/_seg_*.json
+meta-performance/_tiktok_report.json
+meta-performance/_ad_ids.txt
+meta-performance/API-*-Level-Performance.csv
+inbox/*
+!inbox/.keep
+
+# Build outputs (published to the dashboard repos, not stored here)
+/index.html
+/tiktok.html
+meta-performance/Herology_MetaPerformance_*.html
+*.prev
+*.bak
+*.pre-*
+__pycache__/
+.payload.*.json
+.DS_Store

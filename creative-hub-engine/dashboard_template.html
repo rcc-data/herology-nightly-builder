@@ -1,0 +1,3552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Herology — Creative Performance Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#FAF7F2;--bg-elev:#fff;--bg-card:#fff;--ink:#1A1A2E;--ink-soft:#4A4A5E;--ink-muted:#8A8A9E;--purple:#5954A4;--purple-deep:#423E80;--purple-light:#8580C4;--purple-bg:#E5E3F0;--purple-tint:#F0EFF7;--terracotta:#C97464;--terracotta-bg:#F5DDD5;--gold:#B8924E;--gold-bg:#F0E5CC;--line:#E8E5DD;--green:#4A8B6C;--green-bg:#DCEAE0;--red:#B85450;--red-bg:#F5DDDB;--font-display:'Fraunces',serif;--font-body:'Inter',sans-serif;--radius:12px;--radius-sm:8px;--radius-lg:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:var(--font-body);min-height:100vh}
+body{line-height:1.5;overflow-x:hidden}
+.top-header{padding:24px 36px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;position:sticky;top:0;background:rgba(250,247,242,.96);backdrop-filter:blur(20px);z-index:50}
+.brand-row{display:flex;align-items:center;gap:16px}
+.brand-mark{width:52px;height:52px;border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(89,84,164,.25);flex-shrink:0}
+.brand-mark img{width:100%;height:100%;display:block}
+.brand-meta{display:flex;flex-direction:column;line-height:1.1}
+.brand-meta .eyebrow{text-transform:uppercase;letter-spacing:.18em;color:var(--purple);font-size:10px;font-weight:700;margin-bottom:6px}
+.brand-meta h1{font-family:var(--font-display);font-size:24px;font-weight:500;letter-spacing:-.02em;color:var(--ink)}
+.brand-meta h1 em{font-style:italic;color:var(--purple);font-weight:400}
+.header-stats{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.header-stat{display:flex;flex-direction:column;align-items:flex-end;line-height:1.1}
+.header-stat .num{font-family:var(--font-display);font-size:24px;font-weight:500;color:var(--ink);letter-spacing:-.02em}
+.header-stat .num.purple{color:var(--purple)}
+.header-counts{gap:22px}
+.kpi-panel{padding:18px 36px 6px}
+.kpi-strip{display:grid;grid-template-columns:repeat(9,1fr);background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 1px 2px rgba(60,50,110,.04);overflow:hidden}
+.kpi-cell{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px 8px;text-align:center;min-width:0}
+.kpi-cell + .kpi-cell{border-left:1px solid var(--line)}
+.kpi-cell .label{font-size:10px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.1em;font-weight:600;white-space:nowrap}
+.kpi-cell .num{font-family:var(--font-display);font-size:26px;font-weight:500;color:var(--ink);letter-spacing:-.02em;line-height:1.1;font-variant-numeric:lining-nums tabular-nums}
+.kpi-cell .num.purple{color:var(--purple)}
+.kpi-strip.has-seg{grid-template-columns:repeat(10,1fr)}
+.seg-rows{display:flex;flex-direction:column;gap:3px;align-items:flex-start;font-size:12px;font-weight:600;color:var(--ink);font-variant-numeric:lining-nums tabular-nums;line-height:1.15}
+.seg-rows span{white-space:nowrap}.seg-rows i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px}
+@media(max-width:1100px){.kpi-strip.has-seg{grid-template-columns:repeat(3,1fr)}}
+.kpi-delta{min-height:20px;display:flex;justify-content:center}
+@media(max-width:1100px){.kpi-strip{grid-template-columns:repeat(3,1fr)}.kpi-cell:nth-child(3n+1){border-left:none}.kpi-cell:nth-child(n+4){border-top:1px solid var(--line)}}
+@media(max-width:700px){.kpi-panel{padding:14px 20px 4px}.kpi-cell .num{font-size:22px}}
+.header-stat .label{font-size:10px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.12em;margin-top:4px;font-weight:600}
+.date-bar{background:var(--purple-tint);border-bottom:1px solid var(--purple-bg);padding:12px 36px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.date-bar-label{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--purple-deep);font-weight:700}
+.date-input{background:#fff;border:1px solid var(--purple-bg);border-radius:100px;padding:7px 14px;font-size:12px;font-family:var(--font-body);color:var(--ink);outline:none;cursor:pointer}
+.date-input:focus{border-color:var(--purple)}
+.date-presets{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.date-preset{background:#fff;border:1px solid var(--purple-bg);color:var(--purple-deep);border-radius:100px;padding:6px 12px;font-size:11px;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:all .15s}
+.date-preset:hover{background:var(--purple-bg)}
+.date-preset.active{background:var(--purple);color:#fff;border-color:var(--purple)}
+.date-meta{font-size:11px;color:var(--purple-deep);font-weight:500;background:rgba(255,255,255,.6);padding:6px 12px;border-radius:100px}
+.toolbar{padding:18px 36px;background:var(--bg-elev);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.toolbar-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.search-box{flex:1;min-width:240px;max-width:380px;position:relative}
+.search-box input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:100px;padding:10px 16px 10px 38px;color:var(--ink);font-family:var(--font-body);font-size:13px;outline:none;transition:border-color .15s}
+.search-box input:focus{border-color:var(--purple)}
+.search-box::before{content:"";position:absolute;left:14px;top:50%;transform:translateY(-50%);width:14px;height:14px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238A8A9E' stroke-width='2'><circle cx='11' cy='11' r='8'/><path d='m21 21-4.3-4.3'/></svg>") center/contain no-repeat}
+.pill-group{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.pill{background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);border-radius:100px;padding:7px 14px;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap;font-family:var(--font-body)}
+.pill:hover{border-color:var(--purple-light);color:var(--ink)}
+.pill.active{background:var(--purple);color:#fff;border-color:var(--purple)}
+.pill.live-pill.active{background:var(--green);border-color:var(--green)}
+.pill.off-pill.active{background:var(--ink-muted);border-color:var(--ink-muted)}
+.pill.nodata-pill.active{background:var(--gold);border-color:var(--gold)}
+.filter-block{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.filter-label{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:var(--ink-muted);font-weight:700}
+.sort-select,.upload-btn,.reset-btn,.ghost-btn{background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);border-radius:100px;padding:8px 14px;font-size:12px;font-weight:500;cursor:pointer;font-family:var(--font-body);transition:all .15s}
+.sort-select:hover,.upload-btn:hover,.ghost-btn:hover{border-color:var(--purple-light)}
+.upload-btn{background:var(--purple);border-color:var(--purple);color:#fff;font-weight:600}
+.upload-btn:hover{background:var(--purple-deep);border-color:var(--purple-deep)}
+.upload-btn.alt{background:var(--terracotta);border-color:var(--terracotta)}
+.upload-btn.alt:hover{background:#B05A4A;border-color:#B05A4A}
+.reset-btn:hover{color:var(--terracotta);border-color:var(--terracotta)}
+.range-block{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.range-input{width:80px;background:var(--bg);border:1px solid var(--line);border-radius:100px;padding:7px 12px;font-size:12px;color:var(--ink);font-family:var(--font-body);outline:none}
+.range-input:focus{border-color:var(--purple)}
+.campaign-filter-wrap{position:relative}
+.campaign-filter-btn{background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);border-radius:100px;padding:8px 32px 8px 14px;font-size:12px;font-weight:500;cursor:pointer;font-family:var(--font-body);position:relative;min-width:180px;text-align:left}
+.campaign-filter-btn::after{content:"▼";position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:8px;color:var(--ink-muted)}
+.campaign-filter-btn.has-selection{background:var(--purple);color:#fff;border-color:var(--purple)}
+.campaign-filter-btn.has-selection::after{color:#fff}
+.campaign-dropdown{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 12px 32px rgba(26,26,46,.12);padding:8px;min-width:360px;max-height:320px;overflow-y:auto;z-index:60;display:none}
+.campaign-dropdown.open{display:block}
+.campaign-option{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;font-size:12px;cursor:pointer;border-radius:6px;color:var(--ink-soft);line-height:1.3;word-break:break-all}
+.campaign-option:hover{background:var(--purple-tint)}
+.campaign-option input{margin-top:2px;flex-shrink:0;accent-color:var(--purple)}
+.campaign-option-clear{border-top:1px solid var(--line);margin-top:6px;padding-top:8px;color:var(--terracotta);font-weight:500;text-align:center;cursor:pointer;font-size:12px}
+.main{padding:24px 36px 60px;max-width:1800px;margin:0 auto}
+.results-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:12px}
+.results-count{font-family:var(--font-display);font-size:16px;color:var(--ink);font-weight:500;font-style:italic}
+.results-count strong{font-style:normal;font-weight:600;color:var(--purple)}
+.metric-toggle{display:flex;gap:4px;background:var(--bg-elev);border:1px solid var(--line);border-radius:100px;padding:3px;flex-wrap:wrap}
+.metric-toggle-btn{background:transparent;border:none;color:var(--ink-muted);font-family:var(--font-body);font-weight:500;font-size:11px;padding:6px 12px;border-radius:100px;cursor:pointer;transition:all .15s}
+.metric-toggle-btn.active{background:var(--purple);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.card{background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:all .2s ease;display:flex;flex-direction:column;position:relative}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(89,84,164,.12);border-color:var(--purple-light)}
+.card.compare-selected{box-shadow:0 0 0 3px var(--purple),0 12px 28px rgba(89,84,164,.25)}
+.card-video-wrap{position:relative;width:100%;aspect-ratio:9/16;background:linear-gradient(135deg,var(--purple-deep),var(--purple));overflow:hidden;display:flex;align-items:center;justify-content:center}
+.card-video-wrap video{width:100%;height:100%;object-fit:cover}
+.card-video-placeholder{color:rgba(255,255,255,.85);font-family:var(--font-display);font-style:italic;font-size:14px;text-align:center;padding:20px;line-height:1.5}
+.card-video-placeholder .ph-icon{font-size:36px;display:block;margin-bottom:10px;opacity:.7}
+.card-video-placeholder .ph-text{font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-style:normal;opacity:.85;font-weight:600}
+.card-dpa{background:linear-gradient(135deg,var(--gold-bg),var(--terracotta-bg));color:var(--ink)}
+.card-dpa .card-video-placeholder{color:var(--ink)}
+.card-dpa .ph-icon{font-size:64px;opacity:1}
+.card-status{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:6px;z-index:2;align-items:flex-start}
+.status-badge{background:rgba(26,26,46,.75);backdrop-filter:blur(10px);color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;gap:5px}
+.status-badge.live{background:rgba(74,139,108,.92)}
+.status-badge.live::before{content:"";width:6px;height:6px;background:#8FE0A8;border-radius:50%;box-shadow:0 0 6px #8FE0A8;animation:pulse 1.6s infinite}
+.status-badge.off{background:rgba(70,70,80,.85)}
+.status-badge.nodata{background:rgba(184,146,78,.92)}
+.status-badge.days{background:rgba(89,84,164,.92);text-transform:none;letter-spacing:.04em;font-weight:600}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.compare-checkbox{position:absolute;top:12px;right:12px;width:26px;height:26px;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border-radius:6px;display:none;align-items:center;justify-content:center;cursor:pointer;z-index:3;border:1.5px solid rgba(255,255,255,.5);transition:all .15s}
+body.compare-mode .compare-checkbox{display:flex}
+.compare-checkbox.checked{background:var(--purple);border-color:var(--purple)}
+.compare-checkbox.checked::after{content:"";width:14px;height:14px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'><polyline points='20 6 9 17 4 12'/></svg>") center/contain no-repeat}
+.card-metric-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.6) 60%,transparent 100%);padding:24px 16px 14px;color:#fff;z-index:2}
+.card-metric-row{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.card-metric{display:flex;flex-direction:column;line-height:1.05}
+.card-metric .val{font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-.02em;color:#fff}
+.card-metric .lbl{font-size:9px;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.75);margin-top:4px;font-weight:600}
+.card-metric.secondary .val{font-size:18px}
+.card-meta-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.card-roas-pill{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.2);backdrop-filter:blur(8px);border-radius:100px;padding:4px 9px;font-size:11px;font-weight:700;color:#fff}
+.card-roas-pill.good{background:rgba(74,139,108,.92)}
+.card-roas-pill.warn{background:rgba(196,155,63,.92)}
+.card-roas-pill.bad{background:rgba(184,84,80,.92)}
+.card-days-live{font-size:10px;color:rgba(255,255,255,.75);font-weight:600}
+.card-days-live strong{font-family:var(--font-display);font-weight:600;color:#fff;font-size:13px;margin-right:3px}
+.card-info{padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px}
+.card-creative-name{font-family:var(--font-display);font-size:15px;font-weight:500;color:var(--ink);line-height:1.3;letter-spacing:-.01em}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:10px;padding:3px 8px;border-radius:100px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.tag-product{background:var(--purple-bg);color:var(--purple-deep)}
+.tag-product.balance{background:#F5E0CC;color:#8B5A2B}
+.tag-product.meno{background:#E8D5E5;color:#6B3D67}
+.tag-product.zen{background:#D5E5E8;color:#2E5961}
+.tag-product.collagen{background:#F5DDD8;color:#8B3F35}
+.tag-product.creatine{background:#E5DCC8;color:#6B5132}
+.tag-product.ppn{background:#F0E0CC;color:#75531F}
+.tag-product.brandoverall{background:var(--purple-bg);color:var(--purple-deep)}
+.tag-product.allproducts{background:var(--gold-bg);color:#6B5128}
+.tag-type{background:#EDE8DD;color:var(--ink-soft)}
+.tag-theme{background:#E8DCD2;color:#6B4F3D}
+.tag-campaign-mini{background:var(--purple-tint);color:var(--purple-deep);font-size:9px;padding:3px 7px;text-transform:none;letter-spacing:0;font-weight:500;font-family:'SF Mono',Menlo,monospace}
+.card-campaigns-mini{font-size:10px;color:var(--ink-muted);line-height:1.4;padding-top:6px;border-top:1px solid var(--line)}
+.card-campaigns-mini strong{color:var(--purple);font-weight:600;font-size:9px;text-transform:uppercase;letter-spacing:.12em;display:block;margin-bottom:4px}
+.card-no-data{text-align:center;color:var(--ink-muted);font-size:12px;font-style:italic;padding:14px 0 4px}
+.empty{text-align:center;padding:80px 20px;color:var(--ink-muted)}
+.empty h3{font-family:var(--font-display);font-size:24px;margin-bottom:8px;color:var(--ink);font-weight:400;font-style:italic}
+.modal-backdrop{position:fixed;inset:0;background:rgba(26,26,46,.65);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:100;padding:30px}
+.modal-backdrop.open{display:flex}
+.modal{background:var(--bg-card);border-radius:var(--radius-lg);max-width:1100px;width:100%;max-height:92vh;overflow:hidden;display:grid;grid-template-columns:minmax(280px,380px) 1fr;position:relative}
+@media(max-width:800px){.modal{grid-template-columns:1fr;max-height:95vh;overflow-y:auto}}
+.modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all .15s}
+.modal-close:hover{background:#fff;transform:scale(1.05)}
+.modal-close svg{width:16px;height:16px;stroke:var(--ink)}
+.modal-video{background:var(--purple-deep);aspect-ratio:9/16;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.modal-video video{width:100%;height:100%;object-fit:contain}
+.modal-video .placeholder{color:rgba(255,255,255,.7);text-align:center;padding:30px}
+.modal-video .placeholder .ph-icon{font-size:64px;margin-bottom:14px}
+.modal-body{padding:30px 32px;overflow-y:auto;max-height:92vh}
+.modal-eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--purple);font-weight:700;margin-bottom:8px}
+.modal-title{font-family:var(--font-display);font-size:22px;font-weight:500;line-height:1.25;margin-bottom:14px;letter-spacing:-.01em;color:var(--ink);word-break:break-word}
+.modal-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
+.modal-section{margin-bottom:24px}
+.modal-section-label{font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--ink-muted);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.modal-section-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.perf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:600px){.perf-grid{grid-template-columns:repeat(2,1fr)}}
+.perf-cell{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px;display:flex;flex-direction:column;gap:4px}
+.perf-cell .lbl{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-muted);font-weight:700}
+.perf-cell .val{font-family:var(--font-display);font-size:18px;font-weight:500;color:var(--ink);letter-spacing:-.01em}
+.perf-cell.highlight{background:var(--purple-bg);border-color:var(--purple-light)}
+.perf-cell.highlight .val{color:var(--purple-deep)}
+.copy-block{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:10px}
+.copy-block-label{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:var(--ink-muted);font-weight:700;margin-bottom:6px}
+.copy-block-text{font-size:13px;color:var(--ink-soft);line-height:1.5;white-space:pre-wrap}
+.modal-meta-row{display:flex;flex-wrap:wrap;gap:18px;font-size:12px;color:var(--ink-soft)}
+.modal-meta-row > div{display:flex;flex-direction:column;gap:2px}
+.modal-meta-row .lbl{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-muted);font-weight:700}
+.modal-meta-row .val{font-size:13px;color:var(--ink);font-weight:500}
+.campaign-list{display:flex;flex-direction:column;gap:6px}
+.campaign-item{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-sm);padding:8px 12px;font-size:11px;font-family:'SF Mono',Menlo,monospace;color:var(--ink-soft);word-break:break-all;display:flex;align-items:center;gap:8px}
+.campaign-item.live{background:var(--green-bg);border-color:var(--green);color:#2A5C40}
+.campaign-item .live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;box-shadow:0 0 6px var(--green)}
+.compare-bar{position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:#fff;padding:16px 36px;display:none;align-items:center;justify-content:space-between;gap:16px;z-index:80;box-shadow:0 -4px 20px rgba(26,26,46,.18)}
+body.compare-mode .compare-bar{display:flex}
+.compare-info{display:flex;align-items:center;gap:14px;font-size:13px}
+.compare-info strong{background:var(--purple);color:#fff;padding:4px 10px;border-radius:100px;font-weight:600;font-size:12px}
+.compare-actions{display:flex;gap:10px}
+.compare-btn{background:var(--purple);color:#fff;border:none;padding:9px 18px;border-radius:100px;font-family:var(--font-body);font-weight:600;font-size:12px;cursor:pointer;transition:all .15s}
+.compare-btn:hover{background:var(--purple-deep)}
+.compare-btn.outline{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff}
+.compare-btn.outline:hover{background:rgba(255,255,255,.1)}
+.compare-modal-content{background:var(--bg-card);border-radius:var(--radius-lg);max-width:1400px;width:100%;max-height:92vh;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.compare-modal-header{padding:20px 30px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.compare-modal-header h2{font-family:var(--font-display);font-size:22px;font-weight:500;font-style:italic;color:var(--ink)}
+.compare-modal-body{overflow:auto;padding:24px 30px}
+.compare-table-wrap{overflow-x:auto}
+.compare-table{border-collapse:collapse;width:100%;min-width:600px}
+.compare-table td,.compare-table th{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:12px;vertical-align:top}
+.compare-table th{font-family:var(--font-display);font-weight:500;font-size:14px;color:var(--ink);background:var(--bg);position:sticky;top:0;z-index:1}
+.compare-table th.metric-col{font-family:var(--font-body);font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-muted);font-weight:700;background:var(--bg-card);width:140px}
+.compare-table td.metric-name{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-muted);font-weight:700;background:var(--bg)}
+.compare-table td.value{font-family:var(--font-display);font-size:17px;font-weight:500;color:var(--ink)}
+.compare-table td.value.best{background:var(--purple-bg);color:var(--purple-deep)}
+.compare-table td.value.worst{background:var(--red-bg);color:var(--red)}
+.compare-card-mini{display:flex;flex-direction:column;gap:8px}
+.compare-card-mini .mini-video{aspect-ratio:9/16;width:100px;background:var(--purple-deep);border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff}
+.compare-card-mini .mini-video video{width:100%;height:100%;object-fit:cover}
+.compare-card-mini .mini-name{font-size:11px;color:var(--ink);line-height:1.3;word-break:break-word;max-width:180px}
+
+
+
+
+@media(max-width:700px){.top-header{padding:18px 20px}.header-stats{gap:16px}.header-stat .num{font-size:18px}.toolbar,.date-bar{padding:14px 20px}.main{padding:20px 20px 80px}.grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}.compare-bar{padding:12px 20px;flex-direction:column}}
+
+/* ===== VIEW SWITCHER ROW ===== */
+.view-switcher-row {
+  background: linear-gradient(to bottom, rgba(89, 84, 164, 0.04), rgba(89, 84, 164, 0.01));
+  border-bottom: 1px solid var(--purple-bg);
+  padding: 14px 32px;
+}
+.view-switcher-row-inner {
+  max-width: 1700px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.seg-control {
+  display: inline-flex;
+  background: white;
+  border: 1px solid var(--purple-bg);
+  border-radius: 10px;
+  padding: 4px;
+  gap: 2px;
+  box-shadow: 0 1px 2px rgba(89, 84, 164, 0.05);
+}
+.seg-btn {
+  background: transparent;
+  border: none;
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 8px 18px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  user-select: none;
+}
+.seg-btn:hover:not(.active) {
+  background: var(--purple-tint);
+  color: var(--purple);
+}
+.seg-btn.active {
+  background: var(--purple);
+  color: white;
+  box-shadow: 0 1px 3px rgba(89, 84, 164, 0.3);
+}
+.seg-btn:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 2px;
+}
+.view-switcher-hint {
+  font-size: 12px;
+  color: var(--ink-muted);
+  font-style: italic;
+  font-family: var(--font-display);
+}
+@media (max-width: 700px) {
+  .view-switcher-row { padding: 12px 16px; }
+  .seg-btn { padding: 8px 14px; font-size: 12px; }
+  .view-switcher-hint { display: none; }
+}
+
+/* ===== VIEW CONTAINERS ===== */
+.view { display: none; }
+.view.active { display: block; }
+
+
+/* ===== REELS VIEW ===== */
+#reels-view {
+  position: relative;
+  height: calc(100vh - 240px);
+  min-height: 700px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(180deg, #faf9fc 0%, #f3f1f9 100%);
+}
+.reels-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+.reels-iphone {
+  position: relative;
+  width: 360px;
+  height: min(740px, calc(100vh - 280px));
+  background: #1a1a1a;
+  border-radius: 48px;
+  padding: 8px;
+  box-shadow:
+    inset 0 0 0 2px #2a2a2a,
+    0 0 0 2px #000,
+    0 30px 60px rgba(89, 84, 164, 0.25),
+    0 8px 24px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+.reels-iphone::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 28px;
+  background: #000;
+  border-radius: 18px;
+  z-index: 50;
+}
+.reels-iphone::after {
+  content: '';
+  position: absolute;
+  right: -2px;
+  top: 140px;
+  width: 3px;
+  height: 60px;
+  background: #2a2a2a;
+  border-radius: 0 2px 2px 0;
+}
+.reels-screen {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  touch-action: pan-y;
+}
+.reel-inner {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+.reel-inner.dragging { transition: none; }
+.reel-slot {
+  position: absolute;
+  left: 0; right: 0;
+  height: 100%;
+}
+.reel-slot video, .reel-slot .reel-placeholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: linear-gradient(135deg, #4A4694, #5954A4);
+}
+.reel-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.6);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 14px;
+  gap: 12px;
+}
+
+/* ===== IG CHROME ===== */
+.ig-chrome {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+.ig-status-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 44px;
+  padding: 14px 32px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 6;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.ig-status-bar .icons { display: flex; align-items: center; gap: 5px; }
+.ig-status-bar .icons svg { width: 14px; height: 14px; fill: #fff; }
+.ig-status-bar .battery {
+  width: 24px; height: 11px;
+  border: 1px solid rgba(255,255,255,0.85);
+  border-radius: 3px;
+  position: relative;
+  padding: 1px;
+}
+.ig-status-bar .battery::after {
+  content: '';
+  position: absolute;
+  right: -3px; top: 3px;
+  width: 2px; height: 5px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 0 1px 1px 0;
+}
+.ig-status-bar .battery-fill { width: 75%; height: 100%; background: #fff; border-radius: 1px; }
+
+.ig-top {
+  position: absolute;
+  top: 50px; left: 0; right: 0;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 5;
+}
+.ig-top .reels-label {
+  color: #fff;
+  font-size: 19px;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.ig-top .cam-btn svg {
+  width: 24px; height: 24px;
+  stroke: #fff; stroke-width: 1.8; fill: none;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+}
+
+.ig-right {
+  position: absolute;
+  right: 10px;
+  bottom: 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  z-index: 5;
+}
+.ig-icon-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  color: #fff; font-size: 11px; font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.ig-icon-btn svg {
+  width: 26px; height: 26px;
+  fill: none; stroke: #fff; stroke-width: 2;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6));
+}
+.ig-icon-btn .filled { fill: #fff; stroke: none; }
+.ig-brand-thumb {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  background: #5954A4;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  overflow: hidden;
+  padding: 3px;
+}
+.ig-brand-thumb img { width: 100%; height: 100%; object-fit: contain; }
+
+.ig-bottom {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 12px 16px 18px;
+  z-index: 5;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 70%, transparent 100%);
+}
+.ig-profile {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 8px;
+}
+.ig-avatar {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: #5954A4;
+  border: 1.5px solid #fff;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  padding: 4px;
+}
+.ig-avatar img { width: 100%; height: 100%; object-fit: contain; }
+.ig-id { display: flex; flex-direction: column; line-height: 1.15; }
+.ig-handle {
+  font-weight: 700; font-size: 13px; color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  display: flex; align-items: center; gap: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.ig-handle .verified-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px; height: 14px;
+  background: #1da1f2;
+  border-radius: 50%;
+  color: white;
+  font-size: 8px;
+  font-weight: 900;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.ig-sponsored {
+  font-size: 11px;
+  color: rgba(255,255,255,0.95);
+  font-weight: 400;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.ig-follow {
+  margin-left: 6px;
+  border: 1px solid rgba(255,255,255,0.85);
+  background: transparent;
+  color: #fff;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  pointer-events: auto;
+}
+.ig-shop-btn {
+  width: 100%;
+  background: rgba(255,255,255,0.95);
+  color: #000;
+  border: none;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  pointer-events: auto;
+}
+
+/* ===== REELS SIDE PANEL ===== */
+.reels-side {
+  width: 280px;
+  flex-shrink: 0;
+  display: none;
+}
+@media (min-width: 1100px) {
+  .reels-side { display: block; }
+}
+.reels-side .side-eyebrow {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #5954A4;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.reels-side .side-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.25;
+  margin-bottom: 18px;
+  word-break: break-word;
+}
+.reels-side .side-tags {
+  display: flex; flex-wrap: wrap; gap: 5px;
+  margin-bottom: 24px;
+}
+.reels-side .side-metrics {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.reels-side .side-metric {
+  background: var(--purple-tint);
+  border: 1px solid var(--purple-bg);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.reels-side .side-metric .lbl {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #4A4694;
+  font-weight: 700;
+}
+.reels-side .side-metric .val {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  color: #4A4694;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.reels-side .side-metric .sub {
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+/* ===== REELS COUNTER ===== */
+.reels-counter {
+  width: 80px;
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
+  display: none;
+}
+@media (min-width: 1100px) {
+  .reels-counter { display: block; }
+}
+.reels-counter .current {
+  color: #5954A4;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* ===== REELS NAV BUTTONS ===== */
+.reels-nav-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(89, 84, 164, 0.12);
+  border: 1px solid rgba(89, 84, 164, 0.2);
+  color: #5954A4;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 30;
+  transition: all 0.15s ease;
+  backdrop-filter: blur(10px);
+}
+.reels-nav-btn:hover {
+  background: #5954A4;
+  color: white;
+  border-color: #5954A4;
+}
+.reels-nav-btn:disabled { opacity: 0.25; cursor: not-allowed; }
+.reels-nav-btn.up { top: 20px; }
+.reels-nav-btn.down { bottom: 20px; }
+.reels-nav-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+/* ===== PERIOD-OVER-PERIOD DELTA BADGES ===== */
+.delta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 100px;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  margin-left: 4px;
+}
+.delta-up   { color: #1f7a3a; background: rgba(31,122,58,0.10); }
+.delta-down { color: #b94a4a; background: rgba(185,74,74,0.10); }
+.delta-flat { color: #8a8597; background: rgba(138,133,151,0.10); }
+.delta-new  { color: #5954A4; background: rgba(89,84,164,0.10); font-size: 9px; letter-spacing: 0.04em; }
+
+/* Specifically for the small grid cards: a thinner version */
+.card-kpi .delta-badge {
+  font-size: 9px;
+  padding: 0 4px;
+  margin-left: 3px;
+}
+/* In modal KPI tiles */
+.modal-kpi .delta-badge {
+  margin-top: 2px;
+  margin-left: 0;
+}
+/* In header stats */
+.stat-card .delta-badge {
+  font-size: 11px;
+  padding: 2px 8px;
+}
+
+/* ===== END DELTA BADGES ===== */
+
+/* ===== MODAL TREND CHART ===== */
+.modal-trend-section {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--purple-bg);
+}
+.modal-trend-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.modal-trend-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--purple-deep);
+}
+.modal-trend-metric-label {
+  font-size: 11px;
+  color: var(--ink-muted);
+  font-family: var(--font-body);
+}
+.modal-trend-metric-label strong {
+  color: var(--purple);
+  font-weight: 700;
+}
+.modal-trend-chart-wrap {
+  width: 100%;
+  height: 220px;
+  background: white;
+  border: 1px solid var(--purple-bg);
+  border-radius: 10px;
+  padding: 14px;
+  box-sizing: border-box;
+  position: relative;
+}
+.modal-trend-chart-wrap svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.modal-trend-legend {
+  display: flex;
+  gap: 16px;
+  font-size: 10px;
+  color: var(--ink-muted);
+  margin-top: 8px;
+  justify-content: center;
+}
+.modal-trend-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.modal-trend-legend-swatch {
+  width: 16px;
+  height: 2px;
+  background: var(--purple);
+}
+.modal-trend-legend-swatch.prev {
+  background: transparent;
+  border-top: 2px dashed #a8a3c4;
+}
+/* KPI tile clickable affordance */
+.modal-kpi.clickable {
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.modal-kpi.clickable:hover {
+  border-color: var(--purple);
+  background: rgba(89,84,164,0.04);
+}
+.modal-kpi.clickable.selected {
+  border-color: var(--purple);
+  background: rgba(89,84,164,0.08);
+  box-shadow: 0 0 0 1px var(--purple);
+}
+/* ===== END TREND CHART ===== */
+
+/* ===== DATA TABLE VIEW ===== */
+#table-view-container {
+  padding: 24px 32px 60px;
+  max-width: 1700px;
+  margin: 0 auto;
+}
+.table-view-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.table-search {
+  flex: 1;
+  min-width: 240px;
+  background: white;
+  border: 1px solid var(--purple-bg);
+  border-radius: 100px;
+  padding: 10px 18px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.table-search:focus { border-color: var(--purple); }
+.table-meta {
+  font-size: 12px;
+  color: var(--ink-muted);
+  font-family: var(--font-body);
+}
+.table-meta span { color: var(--purple-deep); font-weight: 600; }
+.table-scroll {
+  background: white;
+  border: 1px solid var(--purple-bg);
+  border-radius: 14px;
+  overflow: auto;
+  max-height: calc(100vh - 320px);
+  box-shadow: 0 1px 3px rgba(89, 84, 164, 0.05);
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--ink);
+}
+.data-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--purple-tint);
+}
+.data-table th {
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--purple-deep);
+  white-space: nowrap;
+  border-bottom: 1px solid var(--purple-bg);
+}
+.data-table th.sortable { cursor: pointer; user-select: none; }
+.data-table th.sortable:hover { background: rgba(89, 84, 164, 0.08); }
+.data-table th.col-num { text-align: right; }
+.data-table th.col-action { text-align: center; width: 70px; }
+.data-table th .sort-indicator {
+  display: inline-block;
+  margin-left: 4px;
+  width: 8px;
+  font-size: 10px;
+  opacity: 0.4;
+}
+.data-table th.sort-active .sort-indicator { opacity: 1; color: var(--purple); }
+.data-table tbody tr {
+  border-bottom: 1px solid #f0eef7;
+  transition: background 0.1s;
+}
+.data-table tbody tr:hover { background: rgba(89, 84, 164, 0.03); }
+.data-table tbody tr.unlinked { background: rgba(212, 124, 76, 0.04); }
+.data-table tbody tr.unlinked:hover { background: rgba(212, 124, 76, 0.08); }
+.data-table td { padding: 10px 14px; vertical-align: middle; }
+.data-table td.col-num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+.data-table td.col-num.muted { color: var(--ink-muted); font-weight: 400; }
+.data-table td.col-name {
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 11px;
+  color: var(--ink);
+  word-break: break-all;
+  max-width: 380px;
+}
+.data-table td.col-name .hub-tag {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--ink-muted);
+  font-family: var(--font-body);
+  font-style: italic;
+}
+.data-table td.col-name .hub-tag.unlinked-tag {
+  color: #9c5832;
+  font-style: normal;
+  font-weight: 600;
+}
+.tbl-video-cell { width: 80px; }
+.tbl-video-thumb {
+  width: 56px;
+  height: 80px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #4A4694, #5954A4);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid var(--purple-bg);
+}
+.tbl-video-thumb video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.tbl-video-thumb.no-video {
+  background: repeating-linear-gradient(45deg, #f0eef7, #f0eef7 4px, #e8e4f3 4px, #e8e4f3 8px);
+  color: #9b8fc7;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  line-height: 1.1;
+  padding: 6px;
+}
+.tbl-edit-btn {
+  background: white;
+  border: 1px solid var(--purple-bg);
+  color: var(--purple);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.15s;
+}
+.tbl-edit-btn:hover { background: var(--purple); color: white; }
+.tbl-edit-btn.add-video {
+  background: #d47c4c;
+  color: white;
+  border-color: #d47c4c;
+}
+.tbl-edit-btn.add-video:hover { background: #b6663b; border-color: #b6663b; }
+.tbl-inline-edit { margin-top: 4px; width: 100%; }
+.tbl-inline-edit input {
+  width: 100%;
+  font-size: 9px;
+  padding: 3px 5px;
+  border: 1px solid var(--purple-bg);
+  border-radius: 4px;
+  font-family: 'SF Mono', monospace;
+  color: var(--ink);
+  background: #fafafa;
+  box-sizing: border-box;
+}
+.tbl-inline-edit input:focus {
+  outline: none;
+  border-color: var(--purple);
+  background: white;
+}
+.tbl-inline-edit input.changed {
+  border-color: #d47c4c;
+  background: #fff8f4;
+}
+#edit-video-modal-body { padding: 32px; }
+#edit-video-modal-body h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+#edit-video-modal-body .modal-subtitle {
+  font-size: 12px;
+  color: var(--ink-muted);
+  font-family: 'SF Mono', monospace;
+  margin-bottom: 20px;
+  word-break: break-all;
+}
+#edit-video-modal-body .modal-preview {
+  width: 220px;
+  height: 320px;
+  border-radius: 12px;
+  background: #1a1a1a;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.5);
+  font-size: 12px;
+  font-style: italic;
+  font-family: var(--font-display);
+}
+#edit-video-modal-body .modal-preview video {
+  width: 100%; height: 100%; object-fit: cover;
+}
+#edit-video-modal-body label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--purple-deep);
+  margin-bottom: 6px;
+}
+#edit-video-modal-body input[type=text] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--purple-bg);
+  border-radius: 8px;
+  font-family: 'SF Mono', monospace;
+  font-size: 12px;
+  margin-bottom: 16px;
+  color: var(--ink);
+  background: white;
+  box-sizing: border-box;
+}
+#edit-video-modal-body input[type=text]:focus {
+  outline: none;
+  border-color: var(--purple);
+}
+#edit-video-modal-body .modal-help {
+  font-size: 11px;
+  color: var(--ink-muted);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+#edit-video-modal-body .modal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+#edit-video-modal-body .modal-actions button {
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+}
+#edit-video-modal-body .btn-cancel {
+  background: white;
+  border-color: var(--line);
+  color: var(--ink-muted);
+}
+#edit-video-modal-body .btn-cancel:hover { background: var(--bg-elev); }
+#edit-video-modal-body .btn-save {
+  background: var(--purple);
+  color: white;
+}
+#edit-video-modal-body .btn-save:hover { background: var(--purple-deep); }
+#edit-video-modal-body .btn-clear {
+  background: white;
+  color: #b6663b;
+  border-color: #d47c4c;
+}
+#edit-video-modal-body .btn-clear:hover { background: #fff4ed; }
+/* ===== END DATA TABLE VIEW ===== */
+
+</style>
+</head>
+<body>
+<header class="top-header">
+  <div class="brand-row">
+    <div class="brand-mark"><img src="__LOGO_URL__" alt="Herology" /></div>
+    <div class="brand-meta">
+      <span class="eyebrow">Herology Performance</span>
+      <h1>Creative <em>Hub</em></h1>
+    </div>
+  </div>
+  <div class="header-stats header-counts">
+    <div class="header-stat"><span class="num" id="stat-total">0</span><span class="label">Creatives</span></div>
+    <div class="header-stat"><span class="num purple" id="stat-live">0</span><span class="label">Live</span></div>
+  </div>
+</header>
+<section class="kpi-panel"><div class="kpi-strip"><div class="kpi-cell"><span class="label">Spend</span><span class="num" id="stat-spend">0</span><span class="kpi-delta" id="stat-spend-delta"></span></div><div class="kpi-cell"><span class="label">Purchases</span><span class="num" id="stat-purch">0</span><span class="kpi-delta" id="stat-purch-delta"></span></div><div class="kpi-cell"><span class="label">ROAS</span><span class="num purple" id="stat-roas">0</span><span class="kpi-delta" id="stat-roas-delta"></span></div><div class="kpi-cell"><span class="label">Video Views</span><span class="num" id="stat-views">0</span><span class="kpi-delta" id="stat-views-delta"></span></div><div class="kpi-cell"><span class="label">Cost / View</span><span class="num" id="stat-cpv">0</span><span class="kpi-delta" id="stat-cpv-delta"></span></div><div class="kpi-cell"><span class="label">Link Clicks</span><span class="num" id="stat-clicks">0</span><span class="kpi-delta" id="stat-clicks-delta"></span></div><div class="kpi-cell"><span class="label">Cost / Click</span><span class="num" id="stat-cpc">0</span><span class="kpi-delta" id="stat-cpc-delta"></span></div><div class="kpi-cell"><span class="label" id="stat-follows-label">Follows</span><span class="num" id="stat-follows">0</span><span class="kpi-delta" id="stat-follows-delta"></span></div><div class="kpi-cell"><span class="label" id="stat-social3-label">Saves</span><span class="num" id="stat-social3">0</span><span class="kpi-delta" id="stat-social3-delta"></span></div><div class="kpi-cell" id="seg-cell" style="display:none"><span class="label">Audience split</span><div class="seg-rows" id="stat-seg"></div><span class="kpi-delta" id="stat-seg-delta" style="font-size:10px;color:var(--ink-muted)">% of spend</span></div></div></section>
+
+<!-- VIEW SWITCHER ROW (cache check: v3.2-tabs) -->
+<div class="view-switcher-row">
+  <div class="view-switcher-row-inner">
+    <div class="seg-control" role="tablist">
+      <button type="button" class="seg-btn active" data-view="grid" id="seg-grid" onclick="window.__switchView && window.__switchView('grid')">
+        Grid View
+      </button>
+      <button type="button" class="seg-btn" data-view="reels" id="seg-reels" onclick="window.__switchView && window.__switchView('reels')">
+        Reels Experience
+      </button>
+      <button type="button" class="seg-btn" data-view="table" id="seg-table" onclick="window.__switchView && window.__switchView('table')">
+        Data Table
+      </button>
+      <button type="button" class="seg-btn" data-view="newads" id="seg-newads" onclick="window.__switchView && window.__switchView('newads')">
+        New Ads
+      </button>
+    </div>
+    <div class="view-switcher-hint" id="view-switcher-hint">
+      Browse all 70 video creatives in a grid layout
+    </div>
+  </div>
+</div>
+
+<div class="view active" id="grid-view-wrapper">
+
+<div class="date-bar">
+  <span class="date-bar-label">📅 Date Range</span>
+  <input type="date" class="date-input" id="date-start" />
+  <span style="color: var(--purple-deep);">→</span>
+  <input type="date" class="date-input" id="date-end" />
+  <span class="date-meta" id="date-meta">All time</span>
+  <div class="date-presets">
+    <button class="date-preset" data-preset="7">Last 7 days</button>
+    <button class="date-preset" data-preset="14">Last 14 days</button>
+    <button class="date-preset" data-preset="30">Last 30 days</button>
+    <button class="date-preset" data-preset="90">Last 90 days</button>
+    <button class="date-preset active" data-preset="mtd">This month</button>
+    <button class="date-preset" data-preset="lastmonth">Last month</button>
+    <input type="month" class="date-input" id="month-pick" title="Pick a month" style="padding:4px 8px;" />
+    <button class="date-preset" data-preset="all">All time</button>
+  </div>
+</div>
+
+<div class="toolbar">
+  <div class="toolbar-row" style="justify-content: space-between;">
+    <div class="search-box"><input type="text" id="search-input" placeholder="Search creatives, campaigns, copy..." /></div>
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <button class="upload-btn" id="discover-btn" style="background:var(--green);border-color:var(--green);">🔍 Auto-Discover R2 Files</button><button class="upload-btn alt" id="upload-mapping-btn">⚙ Video Mappings</button>
+      <button class="reset-btn" id="reset-btn">Reset filters</button>
+    </div>
+  </div>
+  <div class="filter-block">
+    <span class="filter-label">Status</span>
+    <div class="pill-group" id="status-filters">
+      <button class="pill" data-status="all">All</button>
+      <button class="pill live-pill active" data-status="live">● Live</button>
+      <button class="pill off-pill" data-status="off">Off</button>
+      <button class="pill nodata-pill" data-status="nodata">No Performance Data</button>
+    </div>
+  </div>
+  <div class="filter-block"><span class="filter-label">Product</span><div class="pill-group" id="product-filters"></div></div>
+  <div class="filter-block">
+    <span class="filter-label">Type</span><div class="pill-group" id="type-filters"></div>
+    <span class="filter-label" style="margin-left: 12px;">Theme</span><div class="pill-group" id="theme-filters"></div>
+  </div>
+  <div class="filter-block">
+    <span class="filter-label">Campaign</span>
+    <div class="campaign-filter-wrap">
+      <button class="campaign-filter-btn" id="campaign-filter-btn">All campaigns</button>
+      <div class="campaign-dropdown" id="campaign-dropdown"></div>
+    </div>
+  </div>
+  <div class="toolbar-row">
+    <div class="range-block"><span class="filter-label">Spend €</span><input type="number" class="range-input" id="spend-min" placeholder="Min" /><span style="color: var(--ink-muted);">–</span><input type="number" class="range-input" id="spend-max" placeholder="Max" /></div>
+    <div class="range-block"><span class="filter-label">ROAS</span><input type="number" step="0.1" class="range-input" id="roas-min" placeholder="Min" /><span style="color: var(--ink-muted);">–</span><input type="number" step="0.1" class="range-input" id="roas-max" placeholder="Max" /></div>
+    <div class="range-block"><span class="filter-label">Days Live</span><input type="number" class="range-input" id="days-min" placeholder="Min" /><span style="color: var(--ink-muted);">–</span><input type="number" class="range-input" id="days-max" placeholder="Max" /></div>
+    <div class="range-block">
+      <span class="filter-label">Sort</span>
+      <select class="sort-select" id="sort-select">
+        <optgroup label="📈 Performance">
+          <option value="purchases-desc" selected>Purchases ↓</option>
+          <option value="value-desc">Purchase Value ↓</option>
+          <option value="roas-desc">ROAS ↓ (best)</option>
+          <option value="roas-asc">ROAS ↑ (worst)</option>
+          <option value="cpp-asc">CPP ↑ (cheapest)</option>
+          <option value="cpp-desc">CPP ↓ (most expensive)</option>
+        </optgroup>
+        <optgroup label="💰 Spend & Reach">
+          <option value="spend-desc">Spend ↓</option>
+          <option value="reach-desc">Reach ↓</option>
+          <option value="frequency-desc">Frequency ↓ (saturated)</option>
+          <option value="frequency-asc">Frequency ↑ (fresh)</option>
+        </optgroup>
+        <optgroup label="🎬 Video Engagement">
+          <option value="hookrate-desc">Hook Rate ↓</option>
+          <option value="holdrate-desc">Hold Rate ↓</option>
+          <option value="completion-desc">Video Completion % ↓</option>
+          <option value="views-desc">Views ↓</option>
+        </optgroup>
+        <optgroup label="🛒 Funnel">
+          <option value="atc-desc">Adds to Cart ↓</option>
+          <option value="costatc-asc">Cost / ATC ↑ (cheapest)</option>
+          <option value="cvr-desc">CVR ↓</option>
+          <option value="ctr-desc">CTR ↓</option>
+          <option value="cpc-asc">CPC ↑ (cheapest)</option>
+          <option value="clicks-desc">Link Clicks ↓</option>
+        </optgroup>
+        <optgroup label="📱 Social">
+          <option value="shares-desc">Shares ↓</option>
+          <option value="saves-desc">Saves ↓</option>
+          <option value="follows-desc">IG Follows ↓</option>
+        </optgroup>
+        <optgroup label="📅 Time">
+          <option value="dayslive-desc">Days Live ↓ (most)</option>
+          <option value="dayslive-asc">Days Live ↑ (least)</option>
+        </optgroup>
+        <optgroup label="🔤 Other">
+          <option value="name-asc">Name A→Z</option>
+          <option value="name-desc">Name Z→A</option>
+        </optgroup>
+      </select>
+    </div>
+    <div style="margin-left: auto;"><button class="ghost-btn" id="compare-toggle">⚖ Compare Mode</button></div>
+  </div>
+</div>
+
+<main class="main">
+  <div class="results-meta">
+    <div class="results-count">Showing <strong id="result-count">0</strong> of <span id="total-count">0</span> creatives</div>
+    <div class="metric-toggle" id="metric-toggle" role="tablist">
+      <button class="metric-toggle-btn active" data-metric="purchases-cpp">Purchases · CPP</button>
+      <button class="metric-toggle-btn" data-metric="spend-roas">Spend · ROAS</button>
+      <button class="metric-toggle-btn" data-metric="value-roas">Value · ROAS</button>
+      <button class="metric-toggle-btn" data-metric="hook-hold">Hook · Hold</button>
+      <button class="metric-toggle-btn" data-metric="views-cpv">Views · Cost/View</button>
+      <button class="metric-toggle-btn" data-metric="traffic">Clicks · CPC</button>
+      <button class="metric-toggle-btn" data-metric="social">Follows · Social</button>
+      <button class="metric-toggle-btn" data-metric="cpc-ctr">CPC · CTR</button>
+      <button class="metric-toggle-btn" data-metric="atc-cpa">ATC · Cost/ATC</button>
+    </div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" style="display: none;">
+    <h3>No creatives match these filters</h3>
+    <p>Try clearing filters, expanding the date range, or adjusting your search.</p>
+  </div>
+</main>
+
+</div><!-- /#grid-view-wrapper -->
+
+<div class="view" id="newads-view-container">
+  <div style="padding:4px 0 14px;color:var(--ink-muted);font-size:13px;" id="newads-note"></div>
+  <div class="grid" id="newads-grid"></div>
+  <div class="empty" id="newads-empty" style="display:none;">No ads built in the last 7 days.</div>
+</div>
+
+<!-- ============ REELS VIEW ============ -->
+<div class="view" id="reels-view-container">
+  <div id="reels-view">
+    <div class="reels-stage">
+      <div class="reels-counter" id="reels-counter"><span class="current">1</span> / <span id="reels-total">0</span></div>
+      <div class="reels-iphone">
+        <div class="reels-screen" id="reels-screen">
+          <div class="reel-inner" id="reel-inner"></div>
+        </div>
+      </div>
+      <div class="reels-side" id="reels-side"></div>
+      <button class="reels-nav-btn up" id="reels-prev" title="Previous (↑)">
+        <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+      </button>
+      <button class="reels-nav-btn down" id="reels-next" title="Next (↓)">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DATA TABLE VIEW ============ -->
+<div class="view" id="table-view-container">
+  <div class="table-view-toolbar">
+    <input type="search" class="table-search" id="table-search" placeholder="Search ad name..." />
+    <div class="table-meta">
+      <span id="table-row-count">0</span> ads · <span id="table-date-range">date range</span>
+      · <span id="table-linked-count">0</span> linked · <span id="table-unlinked-count">0</span> need video
+      <span id="table-overrides-count" style="color:#9c5832;"></span>
+    </div>
+    <button class="ghost-btn" id="table-export-csv" title="Export current view as CSV">⬇ Export CSV</button>
+    <button class="ghost-btn" id="table-reset-overrides" title="Clear all locally-saved video mapping overrides — restores baked-in defaults" style="border-color:#d47c4c;color:#9c5832;">↺ Reset Overrides</button>
+  </div>
+  <div class="table-scroll">
+    <table class="data-table" id="data-table">
+      <thead>
+        <tr>
+          <th class="col-video">Video</th>
+          <th class="col-name sortable" data-sort="name">Meta Ad Name <span class="sort-indicator"></span></th>
+          <th class="col-num sortable" data-sort="spend">Spend <span class="sort-indicator"></span></th>
+          <th class="col-num sortable" data-sort="purchases">Purchases <span class="sort-indicator"></span></th>
+          <th class="col-num sortable" data-sort="roas">ROAS <span class="sort-indicator"></span></th>
+          <th class="col-num sortable" data-sort="cpp">CPP <span class="sort-indicator"></span></th>
+          <th class="col-num sortable" data-sort="ctr">CTR <span class="sort-indicator"></span></th>
+          <th class="col-num sortable" data-sort="hook_rate">Hook Rate <span class="sort-indicator"></span></th>
+          <th class="col-num sortable" data-sort="views">Video Views <span class="sort-indicator"></span></th>
+          <th class="col-num sortable" data-sort="cpv">Cost / View <span class="sort-indicator"></span></th>
+          <th class="col-num sortable" data-sort="clicks">Link Clicks <span class="sort-indicator"></span></th>
+          <th class="col-num sortable" data-sort="cpc">Cost / Click <span class="sort-indicator"></span></th>
+          <th class="col-num sortable" data-sort="follows" id="th-follows">Follows <span class="sort-indicator"></span></th>
+          <th class="col-action">Edit</th>
+        </tr>
+      </thead>
+      <tbody id="data-table-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============ EDIT VIDEO MODAL ============ -->
+<div class="modal-backdrop" id="edit-video-modal">
+  <div class="modal" id="edit-video-modal-content" style="max-width: 600px;">
+    <button class="modal-close" id="edit-video-modal-close"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-body" id="edit-video-modal-body"></div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal">
+  <div class="modal" id="modal-content">
+    <button class="modal-close" id="modal-close"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="modal-video" id="modal-video"></div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="compare-modal">
+  <div class="compare-modal-content">
+    <div class="compare-modal-header">
+      <h2>Side-by-side <em style="font-style:italic;color:var(--purple);">comparison</em></h2>
+      <button class="modal-close" id="compare-modal-close" style="position: static;"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="compare-modal-body" id="compare-modal-body"></div>
+  </div>
+</div>
+
+<div class="compare-bar">
+  <div class="compare-info">
+    <strong id="compare-count">0 selected</strong>
+    <span>Pick 2–4 creatives to compare side by side</span>
+  </div>
+  <div class="compare-actions">
+    <button class="compare-btn outline" id="compare-clear">Clear</button>
+    <button class="compare-btn outline" id="compare-cancel">Exit</button>
+    <button class="compare-btn" id="compare-show">Show comparison →</button>
+  </div>
+</div>
+
+<script>
+const RAW_CARDS = __CARDS_JSON__;
+const NEW_ADS = __NEW_ADS_JSON__;
+function renderNewAds(){
+  var grid=document.getElementById('newads-grid');
+  var note=document.getElementById('newads-note');
+  var empty=document.getElementById('newads-empty');
+  if(!grid) return;
+  grid.innerHTML='';
+  var order={ACTIVE:0,PAUSED:1};
+  var list=(NEW_ADS||[]).slice().sort(function(a,b){ return (String(b.created||'')).localeCompare(String(a.created||'')) || ((order[a.status]||9)-(order[b.status]||9)); });
+  if(note){ var act=list.filter(function(c){return c.status==='ACTIVE';}).length; note.innerHTML='<strong>'+list.length+'</strong> ads built in the last 7 days · '+act+' live, '+(list.length-act)+' paused/draft · pulled from Meta by creation date (includes brand-new ads with no spend yet).'; }
+  if(!list.length){ grid.style.display='none'; if(empty) empty.style.display='block'; return; }
+  grid.style.display='grid'; if(empty) empty.style.display='none';
+  list.forEach(function(c){
+    var perf; try{ perf=computePerformance(c); }catch(e){ perf=null; }
+    var node=renderCard(c, perf, perf);
+    var badge=document.createElement('div');
+    badge.style.cssText='position:absolute;top:8px;left:8px;z-index:5;display:flex;gap:6px;';
+    badge.innerHTML='<span style="background:'+(c.status==='ACTIVE'?'rgba(79,214,160,.92)':'rgba(255,206,107,.92)')+';color:#12101c;font-size:10px;font-weight:800;padding:2px 8px;border-radius:100px;">'+(c.status==='ACTIVE'?'LIVE':'PAUSED')+'</span><span style="background:rgba(0,0,0,.55);color:#fff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:100px;">NEW</span>';
+    if(!node.style.position) node.style.position='relative';
+    node.appendChild(badge);
+    grid.appendChild(node);
+  });
+}
+const META_ADS_FULL = __META_ADS_JSON__;
+const EARLIEST_DATE = "__EARLIEST_DATE__";
+const LATEST_DATE = "__LATEST_DATE__";
+const ALL_CAMPAIGNS = __ALL_CAMPAIGNS__;
+const BAKED_VIDEO_MAPPING = __BAKED_MAPPING__;
+// Account-level daily totals { 'YYYY-MM-DD': {spend, purchases, value} }.
+// Source of truth for the header KPIs — Meta dedupes at account level, so
+// summing ad-level card data undercounts. Empty {} → fall back to card sums.
+const PLATFORM = "__PLATFORM__";
+const IS_TT = PLATFORM === "tiktok";
+const FOLLOWS_LABEL = IS_TT ? "TikTok Follows" : "IG Follows";
+const SOCIAL3_KEY = IS_TT ? "likes" : "saves";        // TikTok reports no saves; Meta reports no likes here
+const SOCIAL3_LABEL = IS_TT ? "Likes" : "Saves";
+const ACCOUNT_DAILY = __ACCOUNT_DAILY__;
+// Audience-segment spend split (Meta 'user_segment_key'): New = prospecting, Engaged (still new), Existing. Meta page only.
+const SEGMENT_DAILY = __SEGMENT_DAILY__;   // {day:{new,engaged,existing,unknown}} spend
+const AD_SEGMENTS = __AD_SEGMENTS__;       // {ads:{adName:{day:[new,existing,unknown] spend}}}
+// Engaged is still a new customer -> folded into New for display (Ryan 2026-10-22)
+Object.keys(SEGMENT_DAILY).forEach(d=>{const x=SEGMENT_DAILY[d]; if(x.engaged){x.new=(x.new||0)+x.engaged; x.engaged=0;}});
+const SEG_META = [["new","New","#7c6cff"],["existing","Existing","#f59e0b"]];
+function segTotals(startDate, endDate) {
+  const t = {new:0, engaged:0, existing:0, unknown:0};
+  for (const d of Object.keys(SEGMENT_DAILY || {})) {
+    if (d >= startDate && d <= endDate) { const r = SEGMENT_DAILY[d]; for (const k in t) t[k] += r[k] || 0; }
+  }
+  const cls = t.new + t.engaged + t.existing, all = cls + t.unknown;
+  // Segment data only exists from May 2026; hide the split if most of the range is unclassified.
+  if (!(cls > 0) || cls < all * 0.5) return null;
+  return {pct: {new: t.new/cls*100, engaged: t.engaged/cls*100, existing: t.existing/cls*100}, spend: t};
+}
+function accountTotals(startDate, endDate) {
+  // Inclusive sum of account-level daily rows within [startDate, endDate].
+  // Returns null if there is no account data at all (so callers fall back).
+  const keys = Object.keys(ACCOUNT_DAILY || {});
+  if (!keys.length) return null;
+  let spend = 0, purchases = 0, value = 0, days = 0, clicks = 0, views = 0, saves = 0, shares = 0, likes = 0, follows = 0;
+  for (const d of keys) {
+    if (d >= startDate && d <= endDate) {
+      const r = ACCOUNT_DAILY[d];
+      spend += r.spend || 0; purchases += r.purchases || 0; value += r.value || 0; days++;
+      clicks += r.clicks || 0; views += r.views || 0; saves += r.saves || 0; shares += r.shares || 0; likes += r.likes || 0; follows += r.follows || 0;
+    }
+  }
+  return { spend, purchases, value, days, clicks, views, saves, shares, likes, follows };
+}
+const DEFAULT_VIDEO_BASE = "__R2_BASE__";
+const LOGO_URL = "__LOGO_URL__";
+const FALLBACK_EXTS = [".mp4", ".MP4", ".mov", ".MOV", ".m4v", ".M4V", ".webm", ".WEBM"];
+
+function setDebug() { /* removed */ }
+setDebug("Loading " + RAW_CARDS.length + " creatives... ");
+
+const state = {
+  search: "", status: "live",
+  products: new Set(), types: new Set(), themes: new Set(), campaigns: new Set(),
+  spendMin: null, spendMax: null, roasMin: null, roasMax: null, daysMin: null, daysMax: null,
+  dateStart: (function() {
+    // Default view = Month to Date (1st of the latest data month -> latest date)
+    var s0 = LATEST_DATE.slice(0, 8) + "01";
+    return s0 < EARLIEST_DATE ? EARLIEST_DATE : s0;
+  })(), dateEnd: LATEST_DATE,
+  sort: "purchases-desc", metric: "purchases-cpp",
+  compareMode: false, selected: new Set(),
+};
+
+function getVideoBase() {
+  try { const s = localStorage.getItem("herology_video_base"); if (s && s.trim()) return s.trim().replace(/\/?$/, "/"); } catch (e) {}
+  return DEFAULT_VIDEO_BASE;
+}
+function getVideoMapping() {
+  // Start with baked-in mappings (shipped with the dashboard)
+  const merged = Object.assign({}, BAKED_VIDEO_MAPPING);
+  // localStorage overrides can override or add
+  try {
+    const s = localStorage.getItem("herology_video_mapping");
+    if (s) Object.assign(merged, JSON.parse(s));
+  } catch (e) {}
+  return merged;
+}
+function getUserOverrides() {
+  // Returns ONLY the user's localStorage overrides, not baked
+  try { const s = localStorage.getItem("herology_video_mapping"); if (s) return JSON.parse(s); } catch (e) {}
+  return {};
+}
+function setVideoMapping(map) { try { localStorage.setItem("herology_video_mapping", JSON.stringify(map)); } catch (e) {} }
+function setVideoOverride(adName, filename) {
+  // Only modify user overrides, leave baked mapping intact
+  const map = getUserOverrides();
+  if (filename && filename.trim()) {
+    // If the new value matches the baked mapping, just clear the override
+    if (BAKED_VIDEO_MAPPING[adName] === filename.trim()) delete map[adName];
+    else map[adName] = filename.trim();
+  } else {
+    // Clear override - this will fall back to baked mapping if it exists
+    delete map[adName];
+  }
+  setVideoMapping(map);
+}
+function videoFallbackSrcs(adName) {
+  const mapping = getVideoMapping();
+  const base = getVideoBase();
+  if (mapping[adName]) {
+    const fname = mapping[adName];
+    // R2 is exact-match. Screenshots can't distinguish dash characters,
+    // so if the filename has any dash-like char, generate variants with
+    // every dash type (hyphen, en-dash, em-dash) plus extension-case variants.
+    const dashChars = ['-', '\u2013', '\u2014'];
+    const hasDash = dashChars.some(d => fname.includes(d));
+    let nameVariants = [fname];
+    if (hasDash) {
+      const variantSet = new Set();
+      dashChars.forEach(targetDash => {
+        let v = fname;
+        dashChars.forEach(d => { v = v.split(d).join(targetDash); });
+        variantSet.add(v);
+      });
+      nameVariants = Array.from(variantSet);
+    }
+    // Q&A token variants — files might be named Q&A, Q+A, QA, or "Q and A"
+    const qaTokens = ['Q&A', 'Q+A', 'QA', 'Q and A', 'QnA'];
+    const expandedQa = [];
+    nameVariants.forEach(nv => {
+      expandedQa.push(nv);
+      const hasQa = qaTokens.some(t => nv.includes(t));
+      if (hasQa) {
+        qaTokens.forEach(target => {
+          let v = nv;
+          qaTokens.forEach(src => { v = v.split(src).join(target); });
+          if (!expandedQa.includes(v)) expandedQa.push(v);
+        });
+      }
+    });
+    nameVariants = expandedQa;
+    // For each name variant, also try common extension-case swaps
+    const out = [];
+    nameVariants.forEach(nv => {
+      out.push(base + encodeURIComponent(nv));
+      const m = nv.match(/\.([A-Za-z0-9]+)$/);
+      if (m) {
+        const stem = nv.slice(0, -(m[1].length + 1));
+        [m[1].toLowerCase(), m[1].toUpperCase()].forEach(ext => {
+          const cand = base + encodeURIComponent(stem + '.' + ext);
+          if (out.indexOf(cand) === -1) out.push(cand);
+        });
+      }
+    });
+    return out;
+  }
+  return FALLBACK_EXTS.map(ext => base + encodeURIComponent(adName) + ext);
+}
+// Video loading: buffer videos in small batches ahead of the scroll position,
+// so a card is already ready by the time the mouse reaches it.
+let _lazyIO = null, _vq = [], _vActive = 0;
+const VIDEO_CONCURRENCY = 6;
+function _vPump() {
+  while (_vActive < VIDEO_CONCURRENCY && _vq.length) {
+    const v = _vq.shift();
+    if (!v._lazyLoad || !v.isConnected) continue;
+    const f = v._lazyLoad; v._lazyLoad = null;
+    _vActive++;
+    let done = false;
+    const fin = () => { if (done) return; done = true; _vActive--; _vPump(); };
+    v.addEventListener("loadeddata", fin, { once: true });
+    setTimeout(fin, 5000);
+    v.preload = "auto";
+    f(fin);
+  }
+}
+function lazyVideoObserve(v) {
+  if (!("IntersectionObserver" in window)) { v._lazyLoad && v._lazyLoad(function(){}); return; }
+  if (!_lazyIO) _lazyIO = new IntersectionObserver(entries => {
+    entries.filter(en => en.isIntersecting)
+      .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left)
+      .forEach(en => { _lazyIO.unobserve(en.target); _vq.push(en.target); });
+    _vPump();
+  }, { rootMargin: "1400px 0px" });
+  _lazyIO.observe(v);
+}
+function lazyVideoNow(v) {
+  if (v._lazyLoad) { _vq.unshift(v); _vActive = Math.max(0, _vActive - 0); const f = v._lazyLoad; v._lazyLoad = null; v.preload = "auto"; f(function(){}); }
+}
+function attachVideoWithFallback(videoEl, adName, onAllFailed) {
+  const candidates = videoFallbackSrcs(adName);
+  let idx = 0;
+  function tryNext() {
+    if (idx >= candidates.length) { if (onAllFailed) onAllFailed(); return; }
+    videoEl.src = candidates[idx++];
+  }
+  videoEl.onerror = tryNext;
+  tryNext();
+}
+
+function fmt(n, opts) {
+  opts = opts || {};
+  if (n === null || n === undefined || isNaN(n)) return "—";
+  if (opts.currency) {
+    if (n >= 1000) return "€" + (n/1000).toFixed(1) + "k";
+    return "€" + n.toFixed(opts.decimals !== undefined ? opts.decimals : 2);
+  }
+  if (n >= 1000000) return (n/1000000).toFixed(2) + "M";
+  if (n >= 10000) return (n/1000).toFixed(1) + "k";
+  return Math.round(n).toLocaleString();
+}
+function fmtNum(n, decimals) {
+  decimals = decimals || 0;
+  if (n === null || n === undefined || isNaN(n)) return "—";
+  return Number(n).toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+}
+function uniqueValues(field) {
+  const s = new Set();
+  RAW_CARDS.forEach(c => { if (c[field]) s.add(c[field]); });
+  return Array.from(s).sort();
+}
+function productClass(p) { return (p || "").toLowerCase().replace(/[^a-z]/g, ""); }
+function escapeHtml(s) {
+  return (s || "").replace(/[&<>"]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
+}
+
+// Extract the meaningful "creative name" from a Hub ad_name.
+// Format: Mon2026_TYPE_Product_Format_Vintage_Creator_CreativeName
+// We always show the LAST segment (after the last underscore) — that's the
+// human-readable creative name. Falls back to creative_preview only if
+// ad_name has no underscores (rare).
+// We deliberately ignore the Hub Sheet's "Creative Preview" column because
+// it's frequently wrong/duplicated (e.g., copy-pasted across rows).
+function getCardLabel(card) {
+  if (!card || !card.ad_name) return "—";
+  const parts = card.ad_name.split('_');
+  if (parts.length > 1) return parts[parts.length - 1];
+  return card.creative_preview || card.ad_name;
+}
+
+function computePerformanceWindow(card, dateStart, dateEnd) {
+  // Aggregate one card's daily data for an arbitrary [dateStart, dateEnd] window.
+  if (!card.daily || Object.keys(card.daily).length === 0) return null;
+
+  // ALL-TIME stats (independent of the filter window) — used for true "days live" and "first active date"
+  const allDays = Object.keys(card.daily).sort();
+  let allTimeDaysLive = 0;
+  let firstEverActive = null;
+  let lastEverActive = null;
+  allDays.forEach(day => {
+    const d = card.daily[day];
+    if (d.spend > 0) {
+      allTimeDaysLive++;
+      if (!firstEverActive) firstEverActive = day;
+      lastEverActive = day;
+    }
+  });
+
+  const days = allDays.filter(d => d >= dateStart && d <= dateEnd);
+  if (days.length === 0) return null;
+  const acc = {
+    spend: 0, purchases: 0, value: 0, reach: 0, clicks: 0, views: 0, atc: 0,
+    video_views_100: 0, shares: 0, saves: 0, follows: 0, likes: 0,
+    campaigns: new Set(), hook_rates: [], hold_rates: [], frequencies: [],
+    days_with_spend: 0, last_active: null,
+  };
+  days.forEach(day => {
+    const d = card.daily[day];
+    acc.spend += d.spend; acc.purchases += d.purchases; acc.value += d.value;
+    acc.reach += d.reach; acc.clicks += d.clicks; acc.views += d.views; acc.atc += d.atc;
+    acc.video_views_100 += d.video_views_100; acc.shares += d.shares;
+    acc.saves += d.saves; acc.follows += d.follows; acc.likes += (d.likes || 0);
+    (d.campaigns || []).forEach(c => acc.campaigns.add(c));
+    if (d.hook_rate_avg) acc.hook_rates.push(d.hook_rate_avg);
+    if (d.hold_rate_avg) acc.hold_rates.push(d.hold_rate_avg);
+    if (d.frequency_avg) acc.frequencies.push(d.frequency_avg);
+    if (d.spend > 0) {
+      acc.days_with_spend++;
+      if (!acc.last_active || day > acc.last_active) acc.last_active = day;
+    }
+  });
+  const avg = arr => arr.length ? arr.reduce((s,v)=>s+v,0)/arr.length : 0;
+  const windowEndDt = new Date(dateEnd);
+  const liveCutoffDt = new Date(windowEndDt); liveCutoffDt.setDate(liveCutoffDt.getDate() - 3);
+  const liveCutoff = liveCutoffDt.toISOString().slice(0, 10);
+  const liveCampaigns = new Set();
+  days.forEach(day => {
+    if (day >= liveCutoff) {
+      const d = card.daily[day];
+      if (d.spend > 0) (d.campaigns || []).forEach(c => liveCampaigns.add(c));
+    }
+  });
+  return {
+    spend: acc.spend, purchases: Math.round(acc.purchases),
+    purchase_value: acc.value,
+    roas: acc.spend > 0 ? acc.value / acc.spend : 0,
+    cpp: acc.purchases > 0 ? acc.spend / acc.purchases : 0,
+    reach: acc.reach, clicks: acc.clicks, views: acc.views, atc: acc.atc,
+    cpc: acc.clicks > 0 ? acc.spend / acc.clicks : 0,
+    cpv: acc.views > 0 ? acc.spend / acc.views : 0,
+    cost_per_atc: acc.atc > 0 ? acc.spend / acc.atc : 0,
+    cvr: acc.clicks > 0 ? acc.purchases / acc.clicks * 100 : 0,
+    ctr: acc.views > 0 ? acc.clicks / acc.views * 100 : 0,
+    hook_rate: avg(acc.hook_rates) * 100,
+    hold_rate: avg(acc.hold_rates) * 100,
+    frequency: avg(acc.frequencies),
+    video_completion_rate: acc.views > 0 ? acc.video_views_100 / acc.views * 100 : 0,
+    shares: acc.shares, saves: acc.saves, follows: acc.follows, likes: acc.likes,
+    campaigns: Array.from(acc.campaigns).sort(),
+    live_campaigns: Array.from(liveCampaigns).sort(),
+    days_live: acc.days_with_spend,
+    first_date: days[0], last_date: days[days.length - 1],
+    last_active_date: acc.last_active,
+    is_live: !!(acc.last_active && acc.last_active >= liveCutoff),
+    has_data: acc.spend > 0 || acc.purchases > 0 || acc.clicks > 0,
+    // All-time stats (independent of window) — for accurate lifetime "days live" and first-ever date
+    total_days_live: allTimeDaysLive,
+    first_ever_active: firstEverActive,
+    last_ever_active: lastEverActive,
+  };
+}
+
+// Compute the mirror previous-period window for any [dateStart, dateEnd].
+// e.g. current = "2026-06-06 → 2026-06-12" (7 days), previous = "2026-05-30 → 2026-06-05".
+function previousPeriod(dateStart, dateEnd) {
+  const start = new Date(dateStart + 'T00:00:00Z');
+  const end = new Date(dateEnd + 'T00:00:00Z');
+  const ms_per_day = 24 * 60 * 60 * 1000;
+  const length_days = Math.round((end - start) / ms_per_day) + 1; // inclusive
+  const prevEnd = new Date(start.getTime() - ms_per_day);
+  const prevStart = new Date(prevEnd.getTime() - (length_days - 1) * ms_per_day);
+  return {
+    start: prevStart.toISOString().slice(0, 10),
+    end: prevEnd.toISOString().slice(0, 10),
+    length_days,
+  };
+}
+
+// Backwards-compat wrapper used widely in the existing code.
+function computePerformance(card) {
+  return computePerformanceWindow(card, state.dateStart, state.dateEnd);
+}
+
+// Compute delta info for a metric. Returns {value, prev, delta_pct, status, direction}
+// status = 'new' | 'flat' | 'good' | 'bad'  (used for color)
+// direction = 'up' | 'down' | 'flat'        (used for arrow — reflects ACTUAL change, not value judgment)
+// goodDirection is 'up' (higher is better) or 'down' (lower is better — e.g. CPP).
+function computeDelta(current, previous, goodDirection) {
+  if (current == null) return {value: null, prev: null, delta_pct: null, status: 'none', direction: 'flat'};
+  if (previous == null || previous === 0) {
+    if (current === 0) return {value: current, prev: 0, delta_pct: null, status: 'none', direction: 'flat'};
+    return {value: current, prev: 0, delta_pct: null, status: 'new', direction: 'flat'};
+  }
+  const delta_pct = (current - previous) / previous * 100;
+  const direction = delta_pct > 0 ? 'up' : (delta_pct < 0 ? 'down' : 'flat');
+  // Dead-zone: ±5% is "flat"
+  const DEAD_ZONE = 5;
+  if (Math.abs(delta_pct) < DEAD_ZONE) {
+    return {value: current, prev: previous, delta_pct, status: 'flat', direction};
+  }
+  // For 'down'-is-good metrics (CPP, CPC, Cost/ATC, Frequency): rising = bad, falling = good
+  // For 'up'-is-good metrics (everything else): rising = good, falling = bad
+  let status;
+  if (goodDirection === 'down') {
+    status = delta_pct < 0 ? 'good' : 'bad';
+  } else {
+    status = delta_pct > 0 ? 'good' : 'bad';
+  }
+  return {value: current, prev: previous, delta_pct, status, direction};
+}
+
+// Render a small delta badge HTML snippet.
+function deltaBadge(delta, opts) {
+  if (!delta || delta.status === 'none') return '';
+  if (delta.status === 'new') {
+    return '<span class="delta-badge delta-new">NEW L7</span>';
+  }
+  if (delta.status === 'flat') {
+    const arrow = delta.direction === 'up' ? '↑' : (delta.direction === 'down' ? '↓' : '');
+    const sign = delta.delta_pct >= 0 ? '+' : '';
+    return '<span class="delta-badge delta-flat">' + (arrow ? arrow + ' ' : '') + sign + delta.delta_pct.toFixed(1) + '%</span>';
+  }
+  // Arrow reflects actual direction of change; color reflects whether that's good or bad
+  const arrow = delta.direction === 'up' ? '↑' : '↓';
+  const cls = delta.status === 'good' ? 'delta-up' : 'delta-down';
+  const sign = delta.delta_pct >= 0 ? '+' : '';
+  return '<span class="delta-badge ' + cls + '">' + arrow + ' ' + sign + delta.delta_pct.toFixed(1) + '%</span>';
+}
+
+function buildFilterPills() {
+  const products = uniqueValues("product");
+  const types = uniqueValues("ad_type");
+  const themes = uniqueValues("theme");
+  function makePills(container, items, stateSet) {
+    container.innerHTML = "";
+    const allBtn = document.createElement("button");
+    allBtn.className = "pill " + (stateSet.size === 0 ? "active" : "");
+    allBtn.textContent = "All";
+    allBtn.onclick = () => { stateSet.clear(); render(); buildFilterPills(); };
+    container.appendChild(allBtn);
+    items.forEach(v => {
+      const b = document.createElement("button");
+      b.className = "pill " + (stateSet.has(v) ? "active" : "");
+      b.textContent = v;
+      b.onclick = () => {
+        if (stateSet.has(v)) stateSet.delete(v); else stateSet.add(v);
+        render(); buildFilterPills();
+      };
+      container.appendChild(b);
+    });
+  }
+  makePills(document.getElementById("product-filters"), products, state.products);
+  makePills(document.getElementById("type-filters"), types, state.types);
+  makePills(document.getElementById("theme-filters"), themes, state.themes);
+  document.querySelectorAll("#status-filters .pill").forEach(p => {
+    p.classList.toggle("active", p.dataset.status === state.status);
+  });
+  buildCampaignDropdown();
+}
+function buildCampaignDropdown() {
+  const dropdown = document.getElementById("campaign-dropdown");
+  dropdown.innerHTML = "";
+  ALL_CAMPAIGNS.forEach(camp => {
+    const opt = document.createElement("label");
+    opt.className = "campaign-option";
+    const cb = document.createElement("input");
+    cb.type = "checkbox";
+    cb.checked = state.campaigns.has(camp);
+    cb.onchange = () => {
+      if (cb.checked) state.campaigns.add(camp); else state.campaigns.delete(camp);
+      updateCampaignButton(); render();
+    };
+    const span = document.createElement("span");
+    span.textContent = camp;
+    opt.appendChild(cb); opt.appendChild(span);
+    dropdown.appendChild(opt);
+  });
+  if (state.campaigns.size > 0) {
+    const clear = document.createElement("div");
+    clear.className = "campaign-option-clear";
+    clear.textContent = "Clear selection";
+    clear.onclick = () => {
+      state.campaigns.clear();
+      updateCampaignButton(); buildCampaignDropdown(); render();
+    };
+    dropdown.appendChild(clear);
+  }
+}
+function updateCampaignButton() {
+  const btn = document.getElementById("campaign-filter-btn");
+  const n = state.campaigns.size;
+  if (n === 0) { btn.textContent = "All campaigns"; btn.classList.remove("has-selection"); }
+  else { btn.textContent = n === 1 ? "1 campaign" : n + " campaigns"; btn.classList.add("has-selection"); }
+}
+document.getElementById("campaign-filter-btn").onclick = (e) => {
+  e.stopPropagation();
+  document.getElementById("campaign-dropdown").classList.toggle("open");
+};
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".campaign-filter-wrap")) {
+    document.getElementById("campaign-dropdown").classList.remove("open");
+  }
+});
+
+function passesFilters(c, perf) {
+  const hasData = perf && perf.has_data;
+  const isLive = perf && perf.is_live;
+  if (state.status === "live" && !isLive) return false;
+  if (state.status === "off" && (isLive || !hasData)) return false;
+  if (state.status === "nodata" && hasData) return false;
+  if (state.products.size > 0 && !state.products.has(c.product)) return false;
+  if (state.types.size > 0 && !state.types.has(c.ad_type)) return false;
+  if (state.themes.size > 0 && !state.themes.has(c.theme)) return false;
+  if (state.campaigns.size > 0) {
+    if (!perf) return false;
+    let hit = false;
+    for (const camp of (perf.campaigns || [])) { if (state.campaigns.has(camp)) { hit = true; break; } }
+    if (!hit) return false;
+  }
+  const spend = perf ? perf.spend : 0;
+  const roas = perf ? perf.roas : 0;
+  const days = perf ? perf.days_live : 0;
+  if (state.spendMin !== null && spend < state.spendMin) return false;
+  if (state.spendMax !== null && spend > state.spendMax) return false;
+  if (state.roasMin !== null && roas < state.roasMin) return false;
+  if (state.roasMax !== null && roas > state.roasMax) return false;
+  if (state.daysMin !== null && days < state.daysMin) return false;
+  if (state.daysMax !== null && days > state.daysMax) return false;
+  if (state.search) {
+    const q = state.search.toLowerCase();
+    const hay = [c.ad_name, c.product, c.ad_type, c.theme, c.creative_preview, c.headline, c.primary_text,
+      (perf ? perf.campaigns.join(" ") : "")].join(" ").toLowerCase();
+    if (!hay.includes(q)) return false;
+  }
+  return true;
+}
+
+function sortCards(arr) {
+  const dir = state.sort.endsWith("-asc") ? 1 : -1;
+  const key = state.sort.split("-")[0];
+  return arr.sort((a, b) => {
+    if (key === "name") return dir * a.card.ad_name.localeCompare(b.card.ad_name);
+    const map = {
+      spend: x => x.perf ? x.perf.spend : 0,
+      purchases: x => x.perf ? x.perf.purchases : 0,
+      cpp: x => x.perf && x.perf.cpp > 0 ? x.perf.cpp : (dir > 0 ? 999999 : -1),
+      roas: x => x.perf ? x.perf.roas : 0,
+      hookrate: x => x.perf ? x.perf.hook_rate : 0,
+      holdrate: x => x.perf ? x.perf.hold_rate : 0,
+      ctr: x => x.perf ? x.perf.ctr : 0,
+      cvr: x => x.perf ? x.perf.cvr : 0,
+      value: x => x.perf ? x.perf.purchase_value : 0,
+      dayslive: x => x.perf ? x.perf.days_live : 0,
+      // ---- Newly added KPIs ----
+      reach: x => x.perf ? x.perf.reach : 0,
+      frequency: x => x.perf ? x.perf.frequency : 0,
+      completion: x => x.perf ? x.perf.video_completion_rate : 0,
+      views: x => x.perf ? x.perf.views : 0,
+      atc: x => x.perf ? x.perf.atc : 0,
+      costatc: x => x.perf && x.perf.cost_per_atc > 0 ? x.perf.cost_per_atc : (dir > 0 ? 999999 : -1),
+      cpc: x => x.perf && x.perf.cpc > 0 ? x.perf.cpc : (dir > 0 ? 999999 : -1),
+      clicks: x => x.perf ? x.perf.clicks : 0,
+      shares: x => x.perf ? x.perf.shares : 0,
+      saves: x => x.perf ? x.perf.saves : 0,
+      follows: x => x.perf ? x.perf.follows : 0,
+    };
+    return dir * (map[key](a) - map[key](b));
+  });
+}
+
+function metricForCard(perf, prev_perf) {
+  if (!perf || !perf.has_data) return { primary: { val: "—", lbl: "No Data" }, secondary: null, roas: null };
+  const m = state.metric;
+  const pp = prev_perf;  // shorthand
+  const D = computeDelta;  // shorthand
+  if (m === "purchases-cpp") return {
+    primary: { val: fmtNum(perf.purchases), lbl: "Purchases", delta: D(perf.purchases, pp ? pp.purchases : null, 'up') },
+    secondary: { val: perf.cpp ? "€" + perf.cpp.toFixed(2) : "—", lbl: "CPP", delta: D(perf.cpp, pp ? pp.cpp : null, 'down') },
+    roas: perf.roas
+  };
+  if (m === "spend-roas") return {
+    primary: { val: fmt(perf.spend, {currency:true,decimals:0}), lbl: "Spend", delta: D(perf.spend, pp ? pp.spend : null, 'up') },
+    secondary: { val: perf.roas.toFixed(2) + "×", lbl: "ROAS", delta: D(perf.roas, pp ? pp.roas : null, 'up') },
+    roas: perf.roas
+  };
+  if (m === "value-roas") return {
+    primary: { val: fmt(perf.purchase_value, {currency:true,decimals:0}), lbl: "Value", delta: D(perf.purchase_value, pp ? pp.purchase_value : null, 'up') },
+    secondary: { val: perf.roas.toFixed(2) + "×", lbl: "ROAS", delta: D(perf.roas, pp ? pp.roas : null, 'up') },
+    roas: perf.roas
+  };
+  if (m === "hook-hold") return {
+    primary: { val: perf.hook_rate.toFixed(1) + "%", lbl: "Hook Rate", delta: D(perf.hook_rate, pp ? pp.hook_rate : null, 'up') },
+    secondary: { val: perf.hold_rate.toFixed(1) + "%", lbl: "Hold Rate", delta: D(perf.hold_rate, pp ? pp.hold_rate : null, 'up') },
+    roas: perf.roas
+  };
+  if (m === "views-cpv") return {
+    primary: { val: fmt(perf.views), lbl: "Video Views", delta: D(perf.views, pp ? pp.views : null, 'up') },
+    secondary: { val: perf.cpv ? "€" + perf.cpv.toFixed(3) : "—", lbl: "Cost / View", delta: D(perf.cpv, pp ? pp.cpv : null, 'down') },
+    roas: perf.roas
+  };
+  if (m === "traffic") return {
+    primary: { val: fmtNum(perf.clicks), lbl: "Link Clicks", delta: D(perf.clicks, pp ? pp.clicks : null, 'up') },
+    secondary: { val: perf.cpc ? "€" + perf.cpc.toFixed(2) : "—", lbl: "Cost / Click", delta: D(perf.cpc, pp ? pp.cpc : null, 'down') },
+    roas: perf.roas
+  };
+  if (m === "social") return {
+    primary: { val: fmtNum(perf.follows), lbl: FOLLOWS_LABEL, delta: D(perf.follows, pp ? pp.follows : null, 'up') },
+    secondary: { val: fmtNum(perf[SOCIAL3_KEY]), lbl: SOCIAL3_LABEL, delta: D(perf[SOCIAL3_KEY], pp ? pp[SOCIAL3_KEY] : null, 'up') },
+    roas: perf.roas
+  };
+  if (m === "cpc-ctr") return {
+    primary: { val: perf.cpc ? "€" + perf.cpc.toFixed(2) : "—", lbl: "CPC", delta: D(perf.cpc, pp ? pp.cpc : null, 'down') },
+    secondary: { val: perf.ctr.toFixed(2) + "%", lbl: "CTR", delta: D(perf.ctr, pp ? pp.ctr : null, 'up') },
+    roas: perf.roas
+  };
+  if (m === "atc-cpa") return {
+    primary: { val: fmtNum(perf.atc), lbl: "ATC", delta: D(perf.atc, pp ? pp.atc : null, 'up') },
+    secondary: { val: perf.cost_per_atc ? "€" + perf.cost_per_atc.toFixed(2) : "—", lbl: "Cost / ATC", delta: D(perf.cost_per_atc, pp ? pp.cost_per_atc : null, 'down') },
+    roas: perf.roas
+  };
+  return { primary: { val: "—", lbl: "—" }, secondary: null, roas: null };
+}
+function roasClass(r) { if (!r) return ""; if (r >= 4) return "good"; if (r >= 2) return "warn"; return "bad"; }
+
+function renderCard(c, perf, prev_perf) {
+  const card = document.createElement("div");
+  card.className = "card" + (state.selected.has(c.ad_name) ? " compare-selected" : "");
+  const hasData = perf && perf.has_data;
+  const statusEl = document.createElement("div");
+  statusEl.className = "card-status";
+  let statusHtml = "";
+  if (c.is_dpa) statusHtml += '<span class="status-badge live">● DPA</span>';
+  else if (!hasData) statusHtml += '<span class="status-badge nodata">No Data</span>';
+  else if (perf.is_live) statusHtml += '<span class="status-badge live">Live</span>';
+  else statusHtml += '<span class="status-badge off">Off</span>';
+  if (hasData && perf.total_days_live > 0) statusHtml += '<span class="status-badge days">' + perf.total_days_live + 'd live</span>';
+  statusEl.innerHTML = statusHtml;
+  card.appendChild(statusEl);
+
+  const cb = document.createElement("div");
+  cb.className = "compare-checkbox" + (state.selected.has(c.ad_name) ? " checked" : "");
+  cb.onclick = (e) => {
+    e.stopPropagation();
+    if (state.selected.has(c.ad_name)) state.selected.delete(c.ad_name);
+    else { if (state.selected.size >= 4) { alert("Compare up to 4 at once."); return; } state.selected.add(c.ad_name); }
+    updateCompareBar(); render();
+  };
+  card.appendChild(cb);
+
+  const videoWrap = document.createElement("div");
+  videoWrap.className = "card-video-wrap" + (c.is_dpa ? " card-dpa" : "");
+  if (c.is_dpa) {
+    videoWrap.innerHTML = '<div class="card-video-placeholder"><span class="ph-icon">🛒</span><span class="ph-text">Dynamic Product Ad</span></div>';
+  } else if (c.placeholder_emoji) {
+    videoWrap.innerHTML = '<div class="card-video-placeholder"><span class="ph-icon" style="font-size:56px;">' + c.placeholder_emoji + '</span><span class="ph-text">Multivariation ad<br/>video not available</span></div>';
+  } else if (c.ad_type === "VID" || c.ad_type === "GIF") {
+    const video = document.createElement("video");
+    video.muted = true; video.loop = true; video.playsInline = true; video.preload = "metadata";
+    video.preload = "none";
+    video._lazyLoad = (fin) => attachVideoWithFallback(video, c.ad_name, () => {
+      if (fin) fin();
+      videoWrap.innerHTML = '<div class="card-video-placeholder"><span class="ph-icon">🎬</span><span class="ph-text">Video</span><br/><a href="#" class="fix-filename-link" data-ad="' + escapeHtml(c.ad_name) + '" style="font-size:10px;color:rgba(255,255,255,0.7);text-decoration:underline;margin-top:8px;display:inline-block;">Set R2 filename</a></div>';
+    });
+    videoWrap.appendChild(video);
+    lazyVideoObserve(video);
+    card.addEventListener("mouseenter", () => { lazyVideoNow(video); video.play().catch(()=>{}); });
+    card.addEventListener("mouseleave", () => { video.pause(); video.currentTime = 0; });
+  } else if (c.ad_type === "IMG") {
+    const mapped = BAKED_VIDEO_MAPPING[c.ad_name] || getUserOverrides()[c.ad_name];
+    if (mapped) {
+      const img = document.createElement("img");
+      img.src = getVideoBase() + encodeURIComponent(mapped);
+      img.alt = c.ad_name;
+      img.style.cssText = "width:100%;height:100%;object-fit:cover;display:block;";
+      img.onerror = () => {
+        videoWrap.innerHTML = '<div class="card-video-placeholder"><span class="ph-icon">🖼</span><span class="ph-text">Image Ad</span><br/><a href="#" class="fix-filename-link" data-ad="' + escapeHtml(c.ad_name) + '" style="font-size:10px;color:rgba(255,255,255,0.7);text-decoration:underline;margin-top:8px;display:inline-block;">Fix R2 filename</a></div>';
+      };
+      videoWrap.appendChild(img);
+    } else {
+      videoWrap.innerHTML = '<div class="card-video-placeholder"><span class="ph-icon">🖼</span><span class="ph-text">Image Ad</span><br/><a href="#" class="fix-filename-link" data-ad="' + escapeHtml(c.ad_name) + '" style="font-size:10px;color:rgba(255,255,255,0.7);text-decoration:underline;margin-top:8px;display:inline-block;">Set R2 filename</a></div>';
+    }
+  } else if (c.ad_type === "CAR") {
+    videoWrap.innerHTML = '<div class="card-video-placeholder"><span class="ph-icon">🛒</span><span class="ph-text">Carousel</span></div>';
+  } else {
+    videoWrap.innerHTML = '<div class="card-video-placeholder"><span class="ph-icon">📄</span><span class="ph-text">' + (c.ad_type || "Ad") + '</span></div>';
+  }
+  if (hasData) {
+    const m = metricForCard(perf, prev_perf);
+    const primaryDelta = m.primary.delta ? deltaBadge(m.primary.delta) : '';
+    const secondaryDelta = m.secondary && m.secondary.delta ? deltaBadge(m.secondary.delta) : '';
+    const overlay = document.createElement("div");
+    overlay.className = "card-metric-overlay";
+    overlay.innerHTML =
+      '<div class="card-metric-row">' +
+        '<div class="card-metric card-kpi"><span class="val">' + m.primary.val + '</span><span class="lbl">' + m.primary.lbl + primaryDelta + '</span></div>' +
+        (m.secondary ? '<div class="card-metric card-kpi secondary" style="text-align:right;"><span class="val">' + m.secondary.val + '</span><span class="lbl">' + m.secondary.lbl + secondaryDelta + '</span></div>' : '') +
+      '</div>' +
+      '<div class="card-meta-row">' +
+        (m.roas !== null ? '<span class="card-roas-pill ' + roasClass(m.roas) + '">' + m.roas.toFixed(2) + '× ROAS</span>' : '<span></span>') +
+        (perf.total_days_live > 0 ? '<span class="card-days-live"><strong>' + perf.total_days_live + '</strong>days</span>' : '') +
+      '</div>';
+    videoWrap.appendChild(overlay);
+  }
+  card.appendChild(videoWrap);
+
+  const info = document.createElement("div");
+  info.className = "card-info";
+  let liveCampaignsHtml = "";
+  if (hasData && perf.live_campaigns && perf.live_campaigns.length > 0) {
+    const campShortNames = perf.live_campaigns.map(camp => {
+      const m = camp.match(/ASC_(\w+)/);
+      return m ? "ASC " + m[1] : camp.split("_").slice(-2).join(" ");
+    });
+    liveCampaignsHtml = '<div class="card-campaigns-mini"><strong>Live in:</strong>' +
+      campShortNames.map(n => '<span class="tag tag-campaign-mini" style="margin-right:4px;display:inline-block;margin-bottom:3px;">' + escapeHtml(n) + '</span>').join("") +
+      '</div>';
+  }
+  info.innerHTML =
+    '<div class="card-creative-name">' + escapeHtml(getCardLabel(c)) + '</div>' +
+    '<div class="card-tags">' +
+      '<span class="tag tag-product ' + productClass(c.product) + '">' + escapeHtml(c.product) + '</span>' +
+      '<span class="tag tag-type">' + escapeHtml(c.ad_type) + '</span>' +
+      (c.theme ? '<span class="tag tag-theme">' + escapeHtml(c.theme) + '</span>' : '') +
+    '</div>' +
+    liveCampaignsHtml +
+    (!hasData ? '<div class="card-no-data">No performance data in this date range</div>' : '');
+  card.appendChild(info);
+
+  card.onclick = () => {
+    if (state.compareMode) cb.click();
+    else openModal(c, perf);
+  };
+  return card;
+}
+
+function render() {
+  try {
+    // Compute previous-period window (mirror of current date range)
+    const prevWindow = previousPeriod(state.dateStart, state.dateEnd);
+
+    const enriched = RAW_CARDS.map(c => ({
+      card: c,
+      perf: computePerformance(c),
+      prev_perf: computePerformanceWindow(c, prevWindow.start, prevWindow.end),
+    }));
+    const filtered = enriched.filter(x => passesFilters(x.card, x.perf));
+    const sorted = sortCards(filtered);
+    const liveCount = enriched.filter(x => x.perf && x.perf.is_live).length;
+    const totalSpend = enriched.reduce((s, x) => s + (x.perf ? x.perf.spend : 0), 0);
+    const totalPurch = enriched.reduce((s, x) => s + (x.perf ? x.perf.purchases : 0), 0);
+    const totalValue = enriched.reduce((s, x) => s + (x.perf ? x.perf.purchase_value : 0), 0);
+    // Previous-period aggregates for header deltas
+    const prevSpend = enriched.reduce((s, x) => s + (x.prev_perf ? x.prev_perf.spend : 0), 0);
+    const prevPurch = enriched.reduce((s, x) => s + (x.prev_perf ? x.prev_perf.purchases : 0), 0);
+    const prevValue = enriched.reduce((s, x) => s + (x.prev_perf ? x.prev_perf.purchase_value : 0), 0);
+    // ---- Header KPIs: prefer account-level totals over summed ad-level ----
+    // Meta dedupes conversions at the account level, so ad-level sums undercount.
+    // Use ACCOUNT_DAILY when present; otherwise fall back to the card sums above.
+    const acctCurr = accountTotals(state.dateStart, state.dateEnd);
+    const acctPrev = acctCurr ? accountTotals(prevWindow.start, prevWindow.end) : null;
+    const kpiSpend = acctCurr ? acctCurr.spend : totalSpend;
+    const kpiPurch = acctCurr ? acctCurr.purchases : totalPurch;
+    const kpiValue = acctCurr ? acctCurr.value : totalValue;
+    const kpiPrevSpend = acctPrev ? acctPrev.spend : prevSpend;
+    const kpiPrevPurch = acctPrev ? acctPrev.purchases : prevPurch;
+    const kpiPrevValue = acctPrev ? acctPrev.value : prevValue;
+    const currROAS = kpiSpend > 0 ? kpiValue/kpiSpend : 0;
+    const prevROAS = kpiPrevSpend > 0 ? kpiPrevValue/kpiPrevSpend : 0;
+
+    {
+      const sum = (arr, k) => arr.reduce((s, x) => s + (x ? (x[k] || 0) : 0), 0);
+      const cur = acctCurr || null, prv = acctPrev || null;
+      const g = (a, ak, k, list) => a ? (a[ak] || 0) : sum(list, k);
+      const cList = enriched.map(x => x.perf), pList = enriched.map(x => x.prev_perf);
+      const vals = {
+        views: [g(cur,'views','views',cList), g(prv,'views','views',pList)],
+        clicks: [g(cur,'clicks','clicks',cList), g(prv,'clicks','clicks',pList)],
+        follows: [g(cur,'follows','follows',cList), g(prv,'follows','follows',pList)],
+        social3: [g(cur, SOCIAL3_KEY, SOCIAL3_KEY, cList), g(prv, SOCIAL3_KEY, SOCIAL3_KEY, pList)],
+      };
+      const sp = [kpiSpend, kpiPrevSpend];
+      const setKpi = (id, v, p, dir, txt) => {
+        document.getElementById("stat-" + id).textContent = txt;
+        document.getElementById("stat-" + id + "-delta").innerHTML = deltaBadge(computeDelta(v, p, dir));
+      };
+      setKpi("views", vals.views[0], vals.views[1], 'up', fmt(vals.views[0]));
+      const cpvC = vals.views[0] > 0 ? sp[0] / vals.views[0] : 0, cpvP = vals.views[1] > 0 ? sp[1] / vals.views[1] : 0;
+      setKpi("cpv", cpvC, cpvP, 'down', cpvC ? "€" + cpvC.toFixed(3) : "—");
+      setKpi("clicks", vals.clicks[0], vals.clicks[1], 'up', fmt(vals.clicks[0]));
+      const cpcC = vals.clicks[0] > 0 ? sp[0] / vals.clicks[0] : 0, cpcP = vals.clicks[1] > 0 ? sp[1] / vals.clicks[1] : 0;
+      setKpi("cpc", cpcC, cpcP, 'down', cpcC ? "€" + cpcC.toFixed(2) : "—");
+      setKpi("follows", vals.follows[0], vals.follows[1], 'up', fmt(vals.follows[0]));
+      setKpi("social3", vals.social3[0], vals.social3[1], 'up', fmt(vals.social3[0]));
+      document.getElementById("stat-follows-label").textContent = FOLLOWS_LABEL;
+      document.getElementById("stat-social3-label").textContent = SOCIAL3_LABEL;
+    }
+    if (!IS_TT) {
+      const cell = document.getElementById("seg-cell");
+      if (cell && Object.keys(SEGMENT_DAILY || {}).length) {
+        cell.style.display = "flex"; cell.parentElement.classList.add("has-seg");
+        const sc = segTotals(state.dateStart, state.dateEnd), sp = segTotals(prevWindow.start, prevWindow.end);
+        document.getElementById("stat-seg").innerHTML = sc
+          ? SEG_META.map(m => '<span><i style="background:' + m[2] + '"></i>' + m[1] + ' ' + sc.pct[m[0]].toFixed(0) + '%</span>').join("")
+          : '<span>—</span>';
+        const dEl = document.getElementById("stat-seg-delta");
+        dEl.title = "New includes engaged (still-new) customers. Share of classified spend; prev period shown as change in Existing share.";
+        dEl.textContent = (sc && sp) ? ("Existing " + (sc.pct.existing - sp.pct.existing >= 0 ? "+" : "") + (sc.pct.existing - sp.pct.existing).toFixed(1) + "pt vs prev") : "% of spend";
+      }
+    }
+    document.getElementById("stat-total").textContent = RAW_CARDS.length;
+    document.getElementById("stat-live").textContent = liveCount;
+    document.getElementById("stat-spend").textContent = "€" + (kpiSpend/1000).toFixed(1) + "k";
+    document.getElementById("stat-purch").textContent = Math.round(kpiPurch).toLocaleString();
+    document.getElementById("stat-roas").textContent = (kpiSpend > 0 ? currROAS.toFixed(2) : "0") + "×";
+    // Header deltas — note CPP-like metrics use goodDirection='down', everything else 'up'
+    document.getElementById("stat-spend-delta").innerHTML = deltaBadge(computeDelta(kpiSpend, kpiPrevSpend, 'up'));
+    document.getElementById("stat-purch-delta").innerHTML = deltaBadge(computeDelta(kpiPurch, kpiPrevPurch, 'up'));
+    document.getElementById("stat-roas-delta").innerHTML = deltaBadge(computeDelta(currROAS, prevROAS, 'up'));
+    document.getElementById("result-count").textContent = sorted.length;
+    document.getElementById("total-count").textContent = RAW_CARDS.length;
+    const grid = document.getElementById("grid");
+    if (_lazyIO) _lazyIO.disconnect();
+    grid.innerHTML = "";
+    if (sorted.length === 0) {
+      grid.style.display = "none";
+      document.getElementById("empty").style.display = "block";
+    } else {
+      grid.style.display = "grid";
+      document.getElementById("empty").style.display = "none";
+      sorted.forEach(x => grid.appendChild(renderCard(x.card, x.perf, x.prev_perf)));
+    }
+    setDebug(
+      "✓ <strong>" + sorted.length + "</strong> creatives shown · " +
+      liveCount + " live · €" + totalSpend.toFixed(0) + " spend in window (" +
+      state.dateStart + " → " + state.dateEnd + ") " +
+      '<button onclick="document.getElementById(\'debug-banner\').style.display=\'none\'">Dismiss</button>'
+    );
+  } catch (err) {
+    setDebug("✗ Render error: " + err.message + " — see browser console", "error");
+    console.error(err);
+  }
+}
+
+function openModal(c, perf) {
+  const modal = document.getElementById("modal");
+  const videoEl = document.getElementById("modal-video");
+  const bodyEl = document.getElementById("modal-body");
+  if (c.is_dpa) {
+    videoEl.innerHTML = '<div class="placeholder"><div class="ph-icon">🛒</div><div>Dynamic Product Ad<br/><small style="opacity:0.6;">Catalog-based</small></div></div>';
+  } else if (c.placeholder_emoji) {
+    videoEl.innerHTML = '<div class="placeholder"><div class="ph-icon" style="font-size:72px;">' + c.placeholder_emoji + '</div><div>Multivariation ad<br/><small style="opacity:0.6;">Video not available</small></div></div>';
+  } else if (c.ad_type === "VID" || c.ad_type === "GIF") {
+    videoEl.innerHTML = '';
+    const v = document.createElement("video");
+    v.controls = true; v.autoplay = true; v.loop = true; v.playsInline = true;
+    attachVideoWithFallback(v, c.ad_name, () => {
+      videoEl.innerHTML = '<div class="placeholder"><div class="ph-icon">🎬</div><div>Video file not found in R2<br/><small style="opacity:0.6;">Tried: ' + escapeHtml(c.ad_name) + '.mp4 / .mov / .m4v / .webm</small><br/><br/><button class="fix-filename-btn" data-ad="' + escapeHtml(c.ad_name) + '" style="background:white;color:var(--purple);border:none;padding:8px 14px;border-radius:100px;font-size:12px;cursor:pointer;font-weight:600;">Set correct R2 filename</button></div></div>';
+    });
+    videoEl.appendChild(v);
+  } else if (c.ad_type === "IMG") {
+    const mapped = BAKED_VIDEO_MAPPING[c.ad_name] || getUserOverrides()[c.ad_name];
+    if (mapped) {
+      videoEl.innerHTML = '';
+      const img = document.createElement("img");
+      img.src = getVideoBase() + encodeURIComponent(mapped);
+      img.alt = c.ad_name;
+      img.style.cssText = "max-width:100%;max-height:100%;object-fit:contain;display:block;margin:0 auto;";
+      img.onerror = () => {
+        videoEl.innerHTML = '<div class="placeholder"><div class="ph-icon">🖼</div><div>Image file not found in R2<br/><small style="opacity:0.6;">Tried: ' + escapeHtml(mapped) + '</small><br/><br/><button class="fix-filename-btn" data-ad="' + escapeHtml(c.ad_name) + '" style="background:white;color:var(--purple);border:none;padding:8px 14px;border-radius:100px;font-size:12px;cursor:pointer;font-weight:600;">Fix R2 filename</button></div></div>';
+      };
+      videoEl.appendChild(img);
+    } else {
+      videoEl.innerHTML = '<div class="placeholder"><div class="ph-icon">🖼</div><div>Static Image<br/><small style="opacity:0.6;">No R2 file mapped</small><br/><br/><button class="fix-filename-btn" data-ad="' + escapeHtml(c.ad_name) + '" style="background:white;color:var(--purple);border:none;padding:8px 14px;border-radius:100px;font-size:12px;cursor:pointer;font-weight:600;">Set R2 filename</button></div></div>';
+    }
+  } else if (c.ad_type === "CAR") {
+    videoEl.innerHTML = '<div class="placeholder"><div class="ph-icon">🛒</div><div>Carousel</div></div>';
+  } else {
+    videoEl.innerHTML = '<div class="placeholder"><div class="ph-icon">📄</div><div>' + escapeHtml(c.ad_type || "Ad") + '</div></div>';
+  }
+
+  // Compute previous period for deltas
+  const prevWindow = previousPeriod(state.dateStart, state.dateEnd);
+  const prev_perf = computePerformanceWindow(c, prevWindow.start, prevWindow.end);
+
+  let perfHtml = "";
+  if (perf && perf.has_data) {
+    // Helper to build a clickable KPI cell with delta badge
+    // key = the metric key in the perf object (also used to look up daily data for the chart)
+    // dir = 'up' (higher is better) or 'down' (lower is better)
+    function kpiCell(key, label, formatted, dir, highlight) {
+      const delta = prev_perf ? computeDelta(perf[key], prev_perf[key], dir) : null;
+      const badge = delta ? deltaBadge(delta) : '';
+      const cls = 'perf-cell modal-kpi clickable' +
+                  (highlight ? ' highlight' : '') +
+                  (modalChartState.metric === key ? ' selected' : '');
+      return '<div class="' + cls + '" data-metric="' + key + '" data-label="' + escapeHtml(label) + '" data-dir="' + dir + '">' +
+             '<span class="lbl">' + label + '</span>' +
+             '<span class="val">' + formatted + '</span>' +
+             (badge ? '<span style="display:block;margin-top:2px;">' + badge + '</span>' : '') +
+             '</div>';
+    }
+    const periodLabel = state.dateStart + ' → ' + state.dateEnd +
+                        ' vs prev ' + prevWindow.start + ' → ' + prevWindow.end;
+    // Audience split for this creative (Meta only): follows the selected date range, % of classified spend. Engaged folded into New.
+    let segHtml = "";
+    if (!IS_TT && AD_SEGMENTS && AD_SEGMENTS.ads) {
+      const names = (c.meta_ad_names && c.meta_ad_names.length) ? c.meta_ad_names : [c.ad_name];
+      let n = 0, e = 0, u = 0, found = false;
+      for (const nm of names) { const a = AD_SEGMENTS.ads[nm]; if (!a) continue;
+        for (const d in a) if (d >= state.dateStart && d <= state.dateEnd) { found = true; n += a[d][0]; e += a[d][1]; u += a[d][2]; } }
+      const cls = n + e;
+      const lbl = '<div class="modal-section"><div class="modal-section-label">Audience split · % of spend, ' + state.dateStart + ' → ' + state.dateEnd + '</div>';
+      if (found && cls > 0 && cls >= 0.5 * (cls + u)) {
+        segHtml = lbl + '<div class="perf-grid">' +
+          '<div class="perf-cell"><span class="lbl">New</span><span class="val">' + (n / cls * 100).toFixed(0) + '%</span></div>' +
+          '<div class="perf-cell"><span class="lbl">Existing</span><span class="val">' + (e / cls * 100).toFixed(0) + '%</span></div></div></div>';
+      } else {
+        segHtml = lbl + '<div class="perf-grid"><div class="perf-cell"><span class="lbl">No audience data for this range</span><span class="val">—</span></div></div></div>';
+      }
+    }
+    perfHtml =
+      '<div class="modal-section"><div class="modal-section-label">Core Performance · ' + periodLabel + '</div>' +
+      '<div class="perf-grid">' +
+        kpiCell('purchases', 'Purchases', fmtNum(perf.purchases), 'up', true) +
+        kpiCell('cpp', 'Cost / Purchase', (perf.cpp ? '€' + perf.cpp.toFixed(2) : '—'), 'down', true) +
+        kpiCell('spend', 'Spend', '€' + perf.spend.toFixed(2), 'up', false) +
+        kpiCell('roas', 'ROAS', perf.roas.toFixed(2) + '×', 'up', false) +
+        kpiCell('purchase_value', 'Purchase Value', '€' + perf.purchase_value.toFixed(0), 'up', false) +
+        '<div class="perf-cell"><span class="lbl">Days Live</span><span class="val">' + perf.total_days_live + '</span><span style="font-size:10px;color:var(--ink-muted);display:block;margin-top:2px;">' + perf.days_live + ' in window</span></div>' +
+        kpiCell('reach', 'Reach', fmtNum(perf.reach), 'up', false) +
+        kpiCell('frequency', 'Frequency', perf.frequency.toFixed(2) + '×', 'down', false) +
+      '</div></div>' +
+      '<div class="modal-section"><div class="modal-section-label">Engagement & Funnel</div>' +
+      '<div class="perf-grid">' +
+        kpiCell('hook_rate', 'Hook Rate', perf.hook_rate.toFixed(2) + '%', 'up', false) +
+        kpiCell('hold_rate', 'Hold Rate', perf.hold_rate.toFixed(2) + '%', 'up', false) +
+        kpiCell('views', 'Video Views', fmtNum(perf.views), 'up', false) +
+        kpiCell('cpv', 'Cost / View', (perf.cpv ? '€' + perf.cpv.toFixed(3) : '—'), 'down', false) +
+        kpiCell('clicks', 'Traffic (Link Clicks)', fmtNum(perf.clicks), 'up', false) +
+        kpiCell('cpc', 'Cost / Click', (perf.cpc ? '€' + perf.cpc.toFixed(2) : '—'), 'down', false) +
+        kpiCell('ctr', 'CTR', perf.ctr.toFixed(2) + '%', 'up', false) +
+        kpiCell('atc', 'Adds to Cart', fmtNum(perf.atc), 'up', false) +
+        kpiCell('cost_per_atc', 'Cost / ATC', (perf.cost_per_atc ? '€' + perf.cost_per_atc.toFixed(2) : '—'), 'down', false) +
+        kpiCell('cvr', 'CVR', perf.cvr.toFixed(2) + '%', 'up', false) +
+      '</div></div>' +
+      '<div class="modal-section"><div class="modal-section-label">Social</div>' +
+      '<div class="perf-grid">' +
+        kpiCell('shares', 'Shares', fmtNum(perf.shares), 'up', false) +
+        kpiCell(SOCIAL3_KEY, SOCIAL3_LABEL, fmtNum(perf[SOCIAL3_KEY]), 'up', false) +
+        kpiCell('follows', FOLLOWS_LABEL, fmtNum(perf.follows), 'up', false) +
+        kpiCell('video_completion_rate', 'Video Completions', perf.video_completion_rate.toFixed(2) + '%', 'up', false) +
+      '</div></div>' +
+      segHtml +
+      // === DAILY TREND CHART ===
+      '<div class="modal-trend-section" id="modal-trend-section">' +
+        '<div class="modal-trend-header">' +
+          '<div class="modal-trend-title">Daily Trend</div>' +
+          '<div class="modal-trend-metric-label">Click any metric above to view its trend · showing <strong id="modal-trend-current-label">Revenue</strong></div>' +
+        '</div>' +
+        '<div class="modal-trend-chart-wrap" id="modal-trend-chart-wrap">' +
+          '<svg id="modal-trend-svg" viewBox="0 0 700 220" preserveAspectRatio="none"></svg>' +
+        '</div>' +
+        '<div class="modal-trend-legend">' +
+          '<div class="modal-trend-legend-item"><span class="modal-trend-legend-swatch"></span> Current: ' + state.dateStart + ' → ' + state.dateEnd + '</div>' +
+          '<div class="modal-trend-legend-item"><span class="modal-trend-legend-swatch prev"></span> Previous: ' + prevWindow.start + ' → ' + prevWindow.end + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="modal-section"><div class="modal-section-label">Currently Live in Campaigns</div>' +
+      '<div class="campaign-list">' +
+        ((perf.live_campaigns && perf.live_campaigns.length > 0) ?
+          perf.live_campaigns.map(cp => '<div class="campaign-item live"><span class="live-dot"></span>' + escapeHtml(cp) + '</div>').join("") :
+          '<div style="color:var(--ink-muted);font-style:italic;font-size:12px;padding:8px 0;">Not currently active</div>') +
+      '</div></div>' +
+      ((perf.campaigns.length > perf.live_campaigns.length) ?
+        '<div class="modal-section"><div class="modal-section-label">All Campaigns in Date Range</div><div class="campaign-list">' +
+        perf.campaigns.filter(cp => !perf.live_campaigns.includes(cp)).map(cp => '<div class="campaign-item">' + escapeHtml(cp) + '</div>').join("") +
+        '</div></div>' : '') +
+      '<div class="modal-section"><div class="modal-meta-row">' +
+        '<div><span class="lbl">First Date</span><span class="val">' + (perf.first_ever_active || perf.first_date) + '</span></div>' +
+        '<div><span class="lbl">Last Date</span><span class="val">' + (perf.last_ever_active || perf.last_date) + '</span></div>' +
+        '<div><span class="lbl">Last Active</span><span class="val">' + (perf.last_ever_active || '—') + '</span></div>' +
+        '<div><span class="lbl">Days Live (Total)</span><span class="val">' + perf.total_days_live + '</span></div>' +
+        '<div><span class="lbl">Status</span><span class="val">' + (perf.is_live ? '🟢 Live' : '⚫ Off') + '</span></div>' +
+      '</div></div>';
+    if (c.meta_ad_names && c.meta_ad_names.length > 1) {
+      perfHtml += '<div class="modal-section"><div class="modal-section-label">Aggregated Meta Ad Variants (' + c.meta_ad_names.length + ')</div><div class="campaign-list">' +
+        c.meta_ad_names.map(n => '<div class="campaign-item">' + escapeHtml(n) + '</div>').join("") + '</div></div>';
+    }
+  } else {
+    perfHtml = '<div class="modal-section"><div style="background: var(--gold-bg); border: 1px solid var(--gold); border-radius: 12px; padding: 20px; text-align: center;">' +
+      '<div style="font-family: var(--font-display); font-size: 18px; color: var(--gold); margin-bottom: 6px; font-style: italic;">No performance data in this date range</div>' +
+      '<div style="font-size: 13px; color: var(--ink-soft);">Try expanding the date window above.</div></div></div>';
+  }
+
+  let copyHtml = "";
+  if (c.primary_text) copyHtml += '<div class="copy-block"><div class="copy-block-label">Primary Text</div><div class="copy-block-text">' + escapeHtml(c.primary_text) + '</div></div>';
+  if (c.headline) copyHtml += '<div class="copy-block"><div class="copy-block-label">Headline</div><div class="copy-block-text">' + escapeHtml(c.headline) + '</div></div>';
+  if (c.description) copyHtml += '<div class="copy-block"><div class="copy-block-label">Description</div><div class="copy-block-text">' + escapeHtml(c.description) + '</div></div>';
+
+  bodyEl.innerHTML =
+    '<div class="modal-eyebrow">' + escapeHtml(c.theme || "—") + ' · ' + escapeHtml(c.dimensions || "") + '</div>' +
+    '<div class="modal-title">' + escapeHtml(getCardLabel(c)) + '</div>' +
+    '<div class="modal-tags">' +
+      '<span class="tag tag-product ' + productClass(c.product) + '">' + escapeHtml(c.product) + '</span>' +
+      '<span class="tag tag-type">' + escapeHtml(c.ad_type) + '</span>' +
+      (c.theme ? '<span class="tag tag-theme">' + escapeHtml(c.theme) + '</span>' : '') +
+      (c.cta ? '<span class="tag" style="background: var(--purple); color: white;">CTA: ' + escapeHtml(c.cta) + '</span>' : '') +
+    '</div>' +
+    perfHtml +
+    (copyHtml ? '<div class="modal-section"><div class="modal-section-label">Ad Copy</div>' + copyHtml + '</div>' : '') +
+    '<div class="modal-section"><div class="modal-section-label">Reference</div><div class="modal-meta-row">' +
+      (c.creative_link ? '<div><span class="lbl">Drive Folder</span><span class="val"><a href="' + escapeHtml(c.creative_link) + '" target="_blank" style="color: var(--purple);">Open ↗</a></span></div>' : '') +
+      (c.landing_page ? '<div><span class="lbl">Landing Page</span><span class="val"><a href="' + escapeHtml(c.landing_page) + '" target="_blank" style="color: var(--purple);">Open ↗</a></span></div>' : '') +
+      '<div><span class="lbl">Ad Name</span><span class="val" style="font-family: monospace; font-size: 11px;">' + escapeHtml(c.ad_name) + '</span></div>' +
+      ((c.ad_type === 'VID' || c.ad_type === 'GIF') ? '<div><span class="lbl">Video</span><span class="val"><a href="#" class="fix-filename-link" data-ad="' + escapeHtml(c.ad_name) + '" style="color: var(--terracotta);">Wrong video? Fix R2 filename</a></span></div>' : '') +
+    '</div></div>';
+  modal.classList.add("open");
+  modal._currentCard = c;
+  // After modal contents are inserted, wire up KPI tile clicks and render the chart
+  if (perf && perf.has_data) {
+    setupModalKpiClicks(c, prev_perf, prevWindow);
+    renderModalTrendChart(c, prev_perf, prevWindow);
+  }
+}
+
+// State for modal trend chart — preserved across re-opens
+const modalChartState = {
+  metric: 'purchase_value',  // default to Revenue
+  label: 'Revenue',
+};
+
+function setupModalKpiClicks(card, prev_perf, prevWindow) {
+  const cells = document.querySelectorAll('#modal-body .modal-kpi.clickable');
+  cells.forEach(cell => {
+    cell.onclick = () => {
+      const metric = cell.dataset.metric;
+      const label = cell.dataset.label;
+      modalChartState.metric = metric;
+      modalChartState.label = label;
+      // Toggle selected styling
+      cells.forEach(c => c.classList.remove('selected'));
+      cell.classList.add('selected');
+      // Update label
+      const lbl = document.getElementById('modal-trend-current-label');
+      if (lbl) lbl.textContent = label;
+      // Re-render the chart
+      renderModalTrendChart(card, prev_perf, prevWindow);
+    };
+  });
+}
+
+// Get daily series of a metric for [start, end]. Returns array of {date, value} aligned to days.
+function dailyMetricSeries(card, metric, dateStart, dateEnd) {
+  const series = [];
+  if (!card.daily) return series;
+  const start = new Date(dateStart + 'T00:00:00Z');
+  const end = new Date(dateEnd + 'T00:00:00Z');
+  const oneDay = 24*60*60*1000;
+  for (let d = new Date(start); d <= end; d = new Date(d.getTime() + oneDay)) {
+    const dateStr = d.toISOString().slice(0, 10);
+    const daily = card.daily[dateStr];
+    let value = 0;
+    if (daily) {
+      // For derived metrics, compute on the fly. For raw metrics, use directly.
+      switch(metric) {
+        case 'purchases': value = daily.purchases || 0; break;
+        case 'spend': value = daily.spend || 0; break;
+        case 'purchase_value': value = daily.value || 0; break;
+        case 'roas': value = daily.spend > 0 ? (daily.value || 0) / daily.spend : 0; break;
+        case 'cpp': value = daily.purchases > 0 ? daily.spend / daily.purchases : 0; break;
+        case 'reach': value = daily.reach || 0; break;
+        case 'frequency': value = daily.frequency_avg || 0; break;
+        case 'hook_rate': value = (daily.hook_rate_avg || 0) * 100; break;
+        case 'hold_rate': value = (daily.hold_rate_avg || 0) * 100; break;
+        case 'clicks': value = daily.clicks || 0; break;
+        case 'views': value = daily.views || 0; break;
+        case 'cpv': value = daily.views > 0 ? daily.spend / daily.views : 0; break;
+        case 'likes': value = daily.likes || 0; break;
+        case 'cpc': value = daily.clicks > 0 ? daily.spend / daily.clicks : 0; break;
+        case 'ctr': value = daily.views > 0 ? daily.clicks / daily.views * 100 : 0; break;
+        case 'atc': value = daily.atc || 0; break;
+        case 'cost_per_atc': value = daily.atc > 0 ? daily.spend / daily.atc : 0; break;
+        case 'cvr': value = daily.clicks > 0 ? daily.purchases / daily.clicks * 100 : 0; break;
+        case 'shares': value = daily.shares || 0; break;
+        case 'saves': value = daily.saves || 0; break;
+        case 'follows': value = daily.follows || 0; break;
+        case 'video_completion_rate':
+          value = daily.views > 0 ? (daily.video_views_100 || 0) / daily.views * 100 : 0; break;
+        default: value = 0;
+      }
+    }
+    series.push({ date: dateStr, value });
+  }
+  return series;
+}
+
+function renderModalTrendChart(card, prev_perf, prevWindow) {
+  const svg = document.getElementById('modal-trend-svg');
+  if (!svg) return;
+  const metric = modalChartState.metric;
+  const currentSeries = dailyMetricSeries(card, metric, state.dateStart, state.dateEnd);
+  const previousSeries = dailyMetricSeries(card, metric, prevWindow.start, prevWindow.end);
+
+  // SVG geometry
+  const W = 700, H = 220;
+  const PAD = {top: 20, right: 20, bottom: 28, left: 50};
+  const innerW = W - PAD.left - PAD.right;
+  const innerH = H - PAD.top - PAD.bottom;
+
+  // x-scale: position by index (so previous overlays current by day-of-period)
+  const n = Math.max(currentSeries.length, previousSeries.length);
+  const xStep = n > 1 ? innerW / (n - 1) : innerW;
+  function x(i) { return PAD.left + i * xStep; }
+
+  // y-scale: max of both series
+  const allValues = currentSeries.map(p => p.value).concat(previousSeries.map(p => p.value));
+  const maxV = Math.max(1, ...allValues);
+  const minV = Math.min(0, ...allValues);  // allow negative ROAS deltas etc
+  const range = maxV - minV || 1;
+  function y(v) { return PAD.top + innerH - (v - minV) / range * innerH; }
+
+  // Format value for tooltips/y-axis based on metric type
+  function fmtMetric(v) {
+    const m = metric;
+    if (m === 'cpv') return '€' + v.toFixed(3);
+    if (['spend','purchase_value','cpp','cpc','cost_per_atc'].includes(m)) return '€' + v.toFixed(v >= 100 ? 0 : 2);
+    if (['roas','frequency'].includes(m)) return v.toFixed(2) + '×';
+    if (['ctr','cvr','hook_rate','hold_rate','video_completion_rate'].includes(m)) return v.toFixed(2) + '%';
+    return Math.round(v).toLocaleString();
+  }
+
+  // Build path strings
+  function pathFor(series) {
+    return series.map((p, i) => (i === 0 ? 'M' : 'L') + x(i).toFixed(1) + ' ' + y(p.value).toFixed(1)).join(' ');
+  }
+  const currentPath = pathFor(currentSeries);
+  const prevPath = pathFor(previousSeries);
+
+  // Y-axis ticks (5)
+  let yTicks = '';
+  const tickCount = 4;
+  for (let t = 0; t <= tickCount; t++) {
+    const v = minV + (range * t / tickCount);
+    const yp = y(v);
+    yTicks +=
+      '<line x1="' + PAD.left + '" x2="' + (W - PAD.right) + '" y1="' + yp + '" y2="' + yp + '" stroke="#e8e4f3" stroke-width="1" stroke-dasharray="2,3"/>' +
+      '<text x="' + (PAD.left - 8) + '" y="' + (yp + 3) + '" text-anchor="end" font-size="9" fill="#8a8597" font-family="DM Sans, sans-serif">' + fmtMetric(v) + '</text>';
+  }
+  // X-axis day labels (first, middle, last only to avoid clutter)
+  let xLabels = '';
+  if (currentSeries.length > 0) {
+    const positions = [0, Math.floor(currentSeries.length/2), currentSeries.length-1];
+    positions.forEach(i => {
+      if (i < currentSeries.length) {
+        const dateStr = currentSeries[i].date.slice(5);  // MM-DD
+        xLabels += '<text x="' + x(i) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="9" fill="#8a8597" font-family="DM Sans, sans-serif">' + dateStr + '</text>';
+      }
+    });
+  }
+
+  // Data point circles (current period only, to keep readable)
+  let circles = '';
+  currentSeries.forEach((p, i) => {
+    circles += '<circle cx="' + x(i).toFixed(1) + '" cy="' + y(p.value).toFixed(1) + '" r="3" fill="#5954A4" stroke="white" stroke-width="1.5">' +
+               '<title>' + p.date + ': ' + fmtMetric(p.value) + '</title>' +
+               '</circle>';
+  });
+
+  svg.innerHTML =
+    yTicks +
+    '<path d="' + prevPath + '" fill="none" stroke="#a8a3c4" stroke-width="2" stroke-dasharray="5,3" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>' +
+    '<path d="' + currentPath + '" fill="none" stroke="#5954A4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+    circles +
+    xLabels;
+}
+
+
+document.getElementById("modal-close").onclick = () => {
+  document.getElementById("modal").classList.remove("open");
+  const v = document.querySelector("#modal-video video");
+  if (v) v.pause();
+};
+document.getElementById("modal").onclick = (e) => {
+  if (e.target.id === "modal") document.getElementById("modal-close").click();
+};
+
+function promptFixFilename(adName) {
+  const current = getVideoMapping()[adName] || (adName + ".mp4");
+  const newName = prompt("Actual filename in R2?\n\nAd Name:\n" + adName + "\n\n(Include extension. Leave blank to clear override.)", current);
+  if (newName === null) return;
+  setVideoOverride(adName, newName);
+  render();
+  const modal = document.getElementById("modal");
+  if (modal.classList.contains("open") && modal._currentCard && modal._currentCard.ad_name === adName) {
+    openModal(modal._currentCard, computePerformance(modal._currentCard));
+  }
+}
+document.addEventListener("click", (e) => {
+  const link = e.target.closest(".fix-filename-link, .fix-filename-btn");
+  if (link) { e.preventDefault(); e.stopPropagation(); const ad = link.dataset.ad; if (ad) promptFixFilename(ad); }
+});
+
+function updateCompareBar() {
+  const n = state.selected.size;
+  document.getElementById("compare-count").textContent = n + " selected";
+  const btn = document.getElementById("compare-show");
+  btn.disabled = n < 2;
+  btn.style.opacity = n < 2 ? 0.4 : 1;
+}
+document.getElementById("compare-toggle").onclick = () => {
+  state.compareMode = !state.compareMode;
+  document.body.classList.toggle("compare-mode", state.compareMode);
+  document.getElementById("compare-toggle").textContent = state.compareMode ? "✕ Exit Compare" : "⚖ Compare Mode";
+  if (!state.compareMode) state.selected.clear();
+  updateCompareBar(); render();
+};
+document.getElementById("compare-clear").onclick = () => { state.selected.clear(); updateCompareBar(); render(); };
+document.getElementById("compare-cancel").onclick = () => document.getElementById("compare-toggle").click();
+document.getElementById("compare-show").onclick = () => { if (state.selected.size < 2) return; showCompareModal(); };
+
+function showCompareModal() {
+  const items = RAW_CARDS.filter(c => state.selected.has(c.ad_name)).map(c => ({ card: c, perf: computePerformance(c) }));
+  const body = document.getElementById("compare-modal-body");
+  const metrics = [
+    { key: "purchases", label: "Purchases", fmt: v => fmtNum(v), bestHigh: true },
+    { key: "cpp", label: "Cost / Purchase", fmt: v => v ? "€" + v.toFixed(2) : "—", bestHigh: false },
+    { key: "spend", label: "Spend", fmt: v => "€" + v.toFixed(2), bestHigh: null },
+    { key: "purchase_value", label: "Purchase Value", fmt: v => "€" + v.toFixed(0), bestHigh: true },
+    { key: "roas", label: "ROAS", fmt: v => v.toFixed(2) + "×", bestHigh: true },
+    { key: "days_live", label: "Days Live", fmt: v => v + "d", bestHigh: null },
+    { key: "hook_rate", label: "Hook Rate", fmt: v => v.toFixed(2) + "%", bestHigh: true },
+    { key: "hold_rate", label: "Hold Rate", fmt: v => v.toFixed(2) + "%", bestHigh: true },
+    { key: "ctr", label: "CTR", fmt: v => v.toFixed(2) + "%", bestHigh: true },
+    { key: "cvr", label: "CVR", fmt: v => v.toFixed(2) + "%", bestHigh: true },
+    { key: "cpc", label: "Cost / Click", fmt: v => v ? "€" + v.toFixed(2) : "—", bestHigh: false },
+    { key: "clicks", label: "Traffic (Link Clicks)", fmt: v => fmtNum(v), bestHigh: true },
+    { key: "views", label: "Video Views", fmt: v => fmtNum(v), bestHigh: true },
+    { key: "cpv", label: "Cost / View", fmt: v => v ? "€" + v.toFixed(3) : "—", bestHigh: false },
+    { key: "follows", label: FOLLOWS_LABEL, fmt: v => fmtNum(v), bestHigh: true },
+    { key: SOCIAL3_KEY, label: SOCIAL3_LABEL, fmt: v => fmtNum(v), bestHigh: true },
+    { key: "shares", label: "Shares", fmt: v => fmtNum(v), bestHigh: true },
+    { key: "atc", label: "Adds to Cart", fmt: v => fmtNum(v), bestHigh: true },
+    { key: "cost_per_atc", label: "Cost / ATC", fmt: v => v ? "€" + v.toFixed(2) : "—", bestHigh: false },
+    { key: "frequency", label: "Frequency", fmt: v => v.toFixed(2) + "×", bestHigh: null },
+    { key: "reach", label: "Reach", fmt: v => fmtNum(v), bestHigh: null },
+  ];
+  let html = '<div style="margin-bottom:14px;font-size:12px;color:var(--ink-muted);">Comparison for date range: <strong style="color:var(--purple);">' + state.dateStart + ' → ' + state.dateEnd + '</strong></div>';
+  html += '<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th class="metric-col">Metric</th>';
+  items.forEach(x => {
+    let videoCell;
+    if (x.card.is_dpa) videoCell = '<div class="mini-video">🛒</div>';
+    else if (x.card.ad_type === "VID") videoCell = '<div class="mini-video"><video muted loop playsinline autoplay src="' + videoFallbackSrcs(x.card.ad_name)[0] + '" onerror="this.parentElement.innerHTML=String.fromCharCode(127916)"></video></div>';
+    else if (x.card.ad_type === "IMG") {
+      const mappedImg = BAKED_VIDEO_MAPPING[x.card.ad_name] || getUserOverrides()[x.card.ad_name];
+      if (mappedImg) {
+        videoCell = '<div class="mini-video"><img src="' + getVideoBase() + encodeURIComponent(mappedImg) + '" alt="" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML=\'🖼\'"/></div>';
+      } else {
+        videoCell = '<div class="mini-video">🖼</div>';
+      }
+    }
+    else if (x.card.ad_type === "CAR") videoCell = '<div class="mini-video">🛒</div>';
+    else videoCell = '<div class="mini-video">📄</div>';
+    html += '<th><div class="compare-card-mini">' + videoCell + '<div class="mini-name">' + escapeHtml(getCardLabel(x.card)) + '</div></div></th>';
+  });
+  html += '</tr></thead><tbody>';
+  metrics.forEach(m => {
+    const vals = items.map(x => x.perf ? x.perf[m.key] : null);
+    let bestIdx = -1, worstIdx = -1;
+    if (m.bestHigh !== null) {
+      const validVals = vals.map((v,i) => ({v, i})).filter(x => x.v !== null && !isNaN(x.v) && x.v > 0);
+      if (validVals.length >= 2) {
+        validVals.sort((a,b) => m.bestHigh ? b.v - a.v : a.v - b.v);
+        bestIdx = validVals[0].i;
+        worstIdx = validVals[validVals.length - 1].i;
+      }
+    }
+    html += '<tr><td class="metric-name">' + m.label + '</td>';
+    vals.forEach((v, i) => {
+      let cls = "value";
+      if (i === bestIdx && bestIdx !== worstIdx) cls += " best";
+      if (i === worstIdx && bestIdx !== worstIdx) cls += " worst";
+      html += '<td class="' + cls + '">' + (v === null || v === undefined ? "—" : m.fmt(v)) + '</td>';
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table></div>';
+  body.innerHTML = html;
+  document.getElementById("compare-modal").classList.add("open");
+}
+document.getElementById("compare-modal-close").onclick = () => document.getElementById("compare-modal").classList.remove("open");
+document.getElementById("compare-modal").onclick = (e) => { if (e.target.id === "compare-modal") document.getElementById("compare-modal").classList.remove("open"); };
+
+function updateDateMeta() {
+  const start = state.dateStart, end = state.dateEnd;
+  const startDt = new Date(start), endDt = new Date(end);
+  const days = Math.round((endDt - startDt) / 86400000) + 1;
+  let label = (start === EARLIEST_DATE && end === LATEST_DATE) ? "All time (" + days + " days)" : days + " day" + (days !== 1 ? "s" : "");
+  document.getElementById("date-meta").textContent = label;
+}
+document.getElementById("date-start").onchange = (e) => {
+  state.dateStart = e.target.value || EARLIEST_DATE;
+  document.querySelectorAll(".date-preset").forEach(p => p.classList.remove("active"));
+  updateDateMeta(); render();
+  if (typeof renderDataTable === 'function') renderDataTable();
+};
+document.getElementById("date-end").onchange = (e) => {
+  state.dateEnd = e.target.value || LATEST_DATE;
+  document.querySelectorAll(".date-preset").forEach(p => p.classList.remove("active"));
+  updateDateMeta(); render();
+  if (typeof renderDataTable === 'function') renderDataTable();
+};
+function setMonthRange(y, m) {
+  const pad = n => String(n).padStart(2, "0");
+  let s0 = y + "-" + pad(m + 1) + "-01";
+  let last = new Date(Date.UTC(y, m + 1, 0)).getUTCDate();
+  let e0 = y + "-" + pad(m + 1) + "-" + pad(last);
+  if (s0 < EARLIEST_DATE) s0 = EARLIEST_DATE;
+  if (e0 > LATEST_DATE) e0 = LATEST_DATE;
+  state.dateStart = s0; state.dateEnd = e0;
+}
+(function() {
+  const mp = document.getElementById("month-pick");
+  if (!mp) return;
+  mp.onchange = () => {
+    if (!mp.value) return;
+    const [y, m] = mp.value.split("-").map(Number);
+    document.querySelectorAll(".date-preset").forEach(p => p.classList.remove("active"));
+    setMonthRange(y, m - 1);
+    document.getElementById("date-start").value = state.dateStart;
+    document.getElementById("date-end").value = state.dateEnd;
+    updateDateMeta(); render();
+    if (typeof renderDataTable === 'function') renderDataTable();
+  };
+})();
+document.querySelectorAll(".date-preset").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".date-preset").forEach(p => p.classList.remove("active"));
+    btn.classList.add("active");
+    const preset = btn.dataset.preset;
+    if (preset === "all") { state.dateStart = EARLIEST_DATE; state.dateEnd = LATEST_DATE; }
+    else if (preset === "mtd" || preset === "lastmonth") {
+      const ld = new Date(LATEST_DATE + "T00:00:00Z");
+      let y = ld.getUTCFullYear(), m = ld.getUTCMonth();
+      if (preset === "lastmonth") { m -= 1; if (m < 0) { m = 11; y -= 1; } }
+      setMonthRange(y, m);
+    } else {
+      const days = parseInt(preset);
+      const endDt = new Date(LATEST_DATE);
+      const startDt = new Date(endDt);
+      startDt.setDate(startDt.getDate() - days + 1);
+      state.dateStart = startDt.toISOString().slice(0, 10);
+      state.dateEnd = endDt.toISOString().slice(0, 10);
+    }
+    document.getElementById("date-start").value = state.dateStart;
+    document.getElementById("date-end").value = state.dateEnd;
+    updateDateMeta();
+    render();
+    if (typeof renderDataTable === 'function') renderDataTable();
+  };
+});
+
+// === AUTO-DISCOVER R2 FILES ===
+async function autoDiscoverR2Files() {
+  const btn = document.getElementById("discover-btn");
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  
+  // Get all video/gif Hub creatives
+  const videoCards = RAW_CARDS.filter(c => c.ad_type === 'VID' || c.ad_type === 'GIF');
+  const totalCount = videoCards.length;
+  
+  // Build candidate filenames for each card
+  // Try: bare name + 8 extensions, + with _2/_3/_4 collision suffixes
+  function buildCandidates(adName) {
+    const candidates = [];
+    const exts = ['.mp4', '.MP4', '.mov', '.MOV', '.m4v', '.M4V', '.webm', '.WEBM'];
+    // Bare name with each extension
+    exts.forEach(ext => candidates.push(adName + ext));
+    // With collision suffixes (_2, _3, _4, _5)
+    for (let i = 2; i <= 5; i++) {
+      exts.forEach(ext => candidates.push(adName + '_' + i + ext));
+    }
+    return candidates;
+  }
+  
+  const base = getVideoBase();
+  let foundCount = 0;
+  let processedCount = 0;
+  const newMappings = {};
+  
+  // Process in parallel batches to avoid overwhelming the browser
+  const BATCH_SIZE = 8;
+  
+  async function checkOne(card) {
+    const candidates = buildCandidates(card.ad_name);
+    for (const fname of candidates) {
+      const url = base + encodeURIComponent(fname);
+      try {
+        const resp = await fetch(url, { method: 'HEAD', mode: 'cors' });
+        if (resp.ok) {
+          newMappings[card.ad_name] = fname;
+          foundCount++;
+          return; // found it, stop trying
+        }
+      } catch (e) {
+        // CORS error or network — skip
+      }
+    }
+  }
+  
+  // Process in batches
+  for (let i = 0; i < videoCards.length; i += BATCH_SIZE) {
+    const batch = videoCards.slice(i, i + BATCH_SIZE);
+    await Promise.all(batch.map(checkOne));
+    processedCount += batch.length;
+    btn.textContent = `🔍 ${processedCount}/${totalCount} · ${foundCount} found`;
+    setDebug("Auto-discovering R2 filenames... " + processedCount + "/" + totalCount + " checked, " + foundCount + " files found", "warn");
+  }
+  
+  // Save all discovered mappings to localStorage
+  const existing = getUserOverrides();
+  Object.assign(existing, newMappings);
+  setVideoMapping(existing);
+  
+  btn.textContent = "✓ Found " + foundCount + " of " + totalCount;
+  setDebug("✓ Auto-discovery complete: <strong>" + foundCount + "</strong> of " + totalCount + " videos found in R2 and mapped. " + 
+    '<button onclick="document.getElementById(\'debug-banner\').style.display=\'none\'">Dismiss</button>');
+  
+  setTimeout(() => {
+    btn.textContent = originalText;
+    btn.disabled = false;
+    render(); // re-render to show the discovered videos
+  }, 2000);
+}
+
+document.getElementById("discover-btn").onclick = autoDiscoverR2Files;
+
+
+// ===== TAB SWITCHING =====
+let currentView = 'grid';
+(function setupViewSwitcher() {
+  console.log('[ViewSwitcher v3.2] Initializing...');
+  
+  function switchTo(view) {
+    console.log('[ViewSwitcher] Switching to:', view);
+    
+    // Update button states
+    var buttons = document.querySelectorAll('.seg-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      if (buttons[i].dataset.view === view) {
+        buttons[i].classList.add('active');
+      } else {
+        buttons[i].classList.remove('active');
+      }
+    }
+    
+    // Toggle view containers
+    var gridWrap = document.getElementById('grid-view-wrapper');
+    var reelsWrap = document.getElementById('reels-view-container');
+    var tableWrap = document.getElementById('table-view-container');
+    
+    if (gridWrap) gridWrap.classList.toggle('active', view === 'grid');
+    if (reelsWrap) reelsWrap.classList.toggle('active', view === 'reels');
+    if (tableWrap) tableWrap.classList.toggle('active', view === 'table');
+    var newadsWrap = document.getElementById('newads-view-container');
+    if (newadsWrap) newadsWrap.classList.toggle('active', view === 'newads');
+    
+    // Update hint text
+    var hint = document.getElementById('view-switcher-hint');
+    if (hint) {
+      hint.textContent = view === 'grid'
+        ? 'Browse all 70 video creatives in a grid layout'
+        : view === 'reels'
+        ? 'Tap each creative to see it on Instagram with Hook & Hold rate'
+        : 'Every Meta ad with linked video — edit mappings inline or via modal';
+    }
+    
+    // Update currentView for keyboard handlers etc
+    if (typeof currentView !== 'undefined') {
+      currentView = view;
+    } else {
+      window.currentView = view;
+    }
+    
+    // Render reels if needed
+    if (view === 'reels' && typeof renderReels === 'function') {
+      try { renderReels(); } catch (e) { console.error('[ViewSwitcher] renderReels failed:', e); }
+    }
+    // Render data table if needed
+    if (view === 'table' && typeof renderDataTable === 'function') {
+      try { renderDataTable(); } catch (e) { console.error('[ViewSwitcher] renderDataTable failed:', e); }
+    }
+    if (view === 'newads' && typeof renderNewAds === 'function') {
+      try { renderNewAds(); } catch (e) { console.error('[ViewSwitcher] renderNewAds failed:', e); }
+    }
+  }
+  
+  // Expose globally for inline onclick handlers AND console debugging
+  window.__switchView = switchTo;
+  window.switchView = switchTo;
+  
+  console.log('[ViewSwitcher v3.2] Ready. Buttons found:', document.querySelectorAll('.seg-btn').length);
+})();
+
+// ===== REELS RENDERING =====
+let reelsCurrentIndex = 0;
+let reelsList = [];
+
+function getReelsList() {
+  // All video creatives that have a baked mapping (i.e., we have a real video file)
+  const videos = RAW_CARDS.filter(c =>
+    (c.ad_type === 'VID' || c.ad_type === 'GIF') && BAKED_VIDEO_MAPPING[c.ad_name]
+  );
+  return videos;
+}
+
+function renderReels() {
+  reelsList = getReelsList();
+  reelsCurrentIndex = 0;
+  document.getElementById('reels-total').textContent = reelsList.length;
+  
+  const inner = document.getElementById('reel-inner');
+  inner.innerHTML = '';
+  
+  reelsList.forEach((card, idx) => {
+    const slot = document.createElement('div');
+    slot.className = 'reel-slot';
+    slot.style.transform = 'translateY(' + (idx * 100) + '%)';
+    slot.dataset.idx = idx;
+    
+    const videoUrl = getVideoBase() + encodeURIComponent(BAKED_VIDEO_MAPPING[card.ad_name]);
+    
+    slot.innerHTML = 
+      '<video muted loop playsinline preload="' + (idx <= 1 ? 'auto' : 'none') + '" src="' + videoUrl + '"></video>' +
+      '<div class="ig-chrome">' +
+        '<div class="ig-status-bar">' +
+          '<div class="time">9:41</div>' +
+          '<div class="icons">' +
+            '<svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="0.5"/><rect x="4" y="6" width="3" height="6" rx="0.5"/><rect x="8" y="3" width="3" height="9" rx="0.5"/><rect x="12" y="0" width="3" height="12" rx="0.5"/></svg>' +
+            '<svg viewBox="0 0 16 12"><path d="M8 11a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm0-5.5c1.5 0 2.9.6 4 1.6l1.4-1.4C11.9 4.2 10 3.5 8 3.5s-3.9.7-5.4 2.2L4 7.1C5.1 6.1 6.5 5.5 8 5.5zm0-4c2.5 0 4.8 1 6.6 2.6L16 2.7C13.9.8 11 0 8 0S2.1.8 0 2.7l1.4 1.4C3.2 2.5 5.5 1.5 8 1.5z"/></svg>' +
+            '<div class="battery"><div class="battery-fill"></div></div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="ig-top">' +
+          '<div class="reels-label">Reels</div>' +
+          '<div class="cam-btn"><svg viewBox="0 0 24 24"><path d="M4 7h3l2-3h6l2 3h3v13H4V7z"/><circle cx="12" cy="13" r="3.5"/></svg></div>' +
+        '</div>' +
+        '<div class="ig-right">' +
+          '<div class="ig-icon-btn"><svg viewBox="0 0 24 24"><path d="M20.8 4.6c-2.2-2-5.7-2-7.8.3L12 6l-1-1c-2.1-2.3-5.6-2.3-7.8-.3-2.4 2.2-2.5 6-.4 8.3L12 21l9.2-8c2.1-2.3 2-6-.4-8.4z"/></svg><span>2.1K</span></div>' +
+          '<div class="ig-icon-btn"><svg viewBox="0 0 24 24"><path d="M21 12c0 4.4-4 8-9 8-1.3 0-2.5-.2-3.6-.7L3 21l1.8-5C3.7 14.8 3 13.5 3 12c0-4.4 4-8 9-8s9 3.6 9 8z"/></svg><span>148</span></div>' +
+          '<div class="ig-icon-btn"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg><span>Share</span></div>' +
+          '<div class="ig-icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.5" class="filled"/><circle cx="6" cy="12" r="1.5" class="filled"/><circle cx="18" cy="12" r="1.5" class="filled"/></svg></div>' +
+          '<div class="ig-brand-thumb"><img src="' + LOGO_URL + '" alt="Herology" /></div>' +
+        '</div>' +
+        '<div class="ig-bottom">' +
+          '<div class="ig-profile">' +
+            '<div class="ig-avatar"><img src="' + LOGO_URL + '" alt="Herology" /></div>' +
+            '<div class="ig-id">' +
+              '<div class="ig-handle">herologyhub <span class="verified-badge">✓</span></div>' +
+              '<div class="ig-sponsored">Sponsored</div>' +
+            '</div>' +
+            '<button class="ig-follow">Follow</button>' +
+          '</div>' +
+          '<div style="font-size:12px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.5);margin-bottom:6px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.4;">' +
+            (escapeHtml((card.primary_text || card.headline || '').substring(0, 80)) + ((card.primary_text || card.headline || '').length > 80 ? '...' : '')) +
+          '</div>' +
+          '<button class="ig-shop-btn">' + (card.cta || 'Shop Now') + '</button>' +
+        '</div>' +
+      '</div>';
+    inner.appendChild(slot);
+  });
+  
+  goToReel(0);
+}
+
+function goToReel(idx) {
+  if (idx < 0 || idx >= reelsList.length) return;
+  reelsCurrentIndex = idx;
+  const inner = document.getElementById('reel-inner');
+  inner.style.transform = 'translateY(' + (-idx * 100) + '%)';
+  
+  // Pause all videos, play current one only
+  inner.querySelectorAll('video').forEach((v, i) => {
+    if (i === idx) {
+      v.preload = 'auto';
+      // Allow video to load before playing
+      setTimeout(() => v.play().catch(()=>{}), 50);
+    } else {
+      v.pause();
+      if (Math.abs(i - idx) > 1) v.preload = 'none';
+    }
+  });
+  // Preload neighbours
+  if (idx + 1 < reelsList.length) {
+    const next = inner.querySelectorAll('video')[idx + 1];
+    if (next) next.preload = 'auto';
+  }
+  
+  // Update side panel
+  updateReelsSide();
+  
+  // Update counter
+  document.querySelector('#reels-counter .current').textContent = idx + 1;
+  
+  // Update nav buttons
+  document.getElementById('reels-prev').disabled = idx === 0;
+  document.getElementById('reels-next').disabled = idx === reelsList.length - 1;
+}
+
+function updateReelsSide() {
+  const card = reelsList[reelsCurrentIndex];
+  if (!card) return;
+  const perf = computePerformance(card);
+  const side = document.getElementById('reels-side');
+  
+  const tags = [
+    '<span class="tag tag-product ' + productClass(card.product) + '">' + escapeHtml(card.product) + '</span>',
+    '<span class="tag tag-type">' + escapeHtml(card.ad_type) + '</span>',
+  ];
+  if (card.theme) tags.push('<span class="tag tag-theme">' + escapeHtml(card.theme) + '</span>');
+  
+  const hookRate = perf ? perf.hook_rate : 0;
+  const holdRate = perf ? perf.hold_rate : 0;
+  
+  side.innerHTML =
+    '<div class="side-eyebrow">' + escapeHtml(card.theme || 'Creative') + '</div>' +
+    '<div class="side-title">' + escapeHtml(getCardLabel(card)) + '</div>' +
+    '<div class="side-tags">' + tags.join('') + '</div>' +
+    '<div class="side-metrics">' +
+      '<div class="side-metric">' +
+        '<span class="lbl">Hook Rate</span>' +
+        '<span class="val">' + (perf ? hookRate.toFixed(2) + '%' : '—') + '</span>' +
+        '<span class="sub">3-second video views ÷ impressions</span>' +
+      '</div>' +
+      '<div class="side-metric">' +
+        '<span class="lbl">Hold Rate</span>' +
+        '<span class="val">' + (perf ? holdRate.toFixed(2) + '%' : '—') + '</span>' +
+        '<span class="sub">15-second views ÷ impressions</span>' +
+      '</div>' +
+    '</div>';
+}
+
+document.getElementById('reels-prev').onclick = () => goToReel(reelsCurrentIndex - 1);
+document.getElementById('reels-next').onclick = () => goToReel(reelsCurrentIndex + 1);
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (currentView !== 'reels') return;
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); goToReel(reelsCurrentIndex + 1); }
+  if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); goToReel(reelsCurrentIndex - 1); }
+});
+
+// Wheel scroll within reels (debounced)
+let wheelTimeout = null;
+let wheelAccum = 0;
+document.getElementById('reels-screen')?.addEventListener('wheel', (e) => {
+  if (currentView !== 'reels') return;
+  e.preventDefault();
+  wheelAccum += e.deltaY;
+  if (wheelTimeout) return;
+  wheelTimeout = setTimeout(() => {
+    if (wheelAccum > 30) goToReel(reelsCurrentIndex + 1);
+    else if (wheelAccum < -30) goToReel(reelsCurrentIndex - 1);
+    wheelAccum = 0;
+    wheelTimeout = null;
+  }, 100);
+}, { passive: false });
+
+// Touch swipe
+let touchStartY = null;
+document.getElementById('reels-screen')?.addEventListener('touchstart', (e) => {
+  touchStartY = e.touches[0].clientY;
+});
+document.getElementById('reels-screen')?.addEventListener('touchend', (e) => {
+  if (touchStartY === null) return;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  if (Math.abs(dy) > 50) {
+    if (dy < 0) goToReel(reelsCurrentIndex + 1);
+    else goToReel(reelsCurrentIndex - 1);
+  }
+  touchStartY = null;
+});
+
+// ===== DATA TABLE VIEW =====
+const tableState = {
+  search: '',
+  sortKey: 'spend',
+  sortDir: 'desc'
+};
+
+function computeMetaAdPerf(meta) {
+  // Aggregate Meta ad's daily data within current state.dateStart..dateEnd window
+  if (!meta.daily) return null;
+  const days = Object.keys(meta.daily).filter(d => d >= state.dateStart && d <= state.dateEnd).sort();
+  if (days.length === 0) return null;
+  const acc = {
+    spend: 0, purchases: 0, value: 0, clicks: 0, views: 0, follows: 0,
+    hook_rates: [], days_with_spend: 0
+  };
+  days.forEach(day => {
+    const d = meta.daily[day];
+    acc.spend += d.spend; acc.purchases += d.purchases; acc.value += d.value;
+    acc.clicks += d.clicks; acc.views += d.views; acc.follows += (d.follows || 0);
+    if (d.hook_rate_avg) acc.hook_rates.push(d.hook_rate_avg);
+    if (d.spend > 0) acc.days_with_spend++;
+  });
+  return {
+    spend: acc.spend,
+    purchases: Math.round(acc.purchases),
+    value: acc.value,
+    roas: acc.spend > 0 ? acc.value / acc.spend : 0,
+    cpp: acc.purchases > 0 ? acc.spend / acc.purchases : 0,
+    ctr: acc.views > 0 ? acc.clicks / acc.views * 100 : 0,
+    views: acc.views, clicks: acc.clicks, follows: acc.follows,
+    cpv: acc.views > 0 ? acc.spend / acc.views : 0,
+    cpc: acc.clicks > 0 ? acc.spend / acc.clicks : 0,
+    hook_rate: acc.hook_rates.length ? (acc.hook_rates.reduce((s,v)=>s+v,0)/acc.hook_rates.length * 100) : 0,
+    has_data: acc.spend > 0 || acc.purchases > 0 || acc.clicks > 0,
+  };
+}
+
+function getVideoForMetaAd(meta) {
+  // Returns R2 filename if mapped (via the matched hub ad), or null
+  if (!meta.matched_hub_ad) return null;
+  const mapping = getVideoMapping();
+  return mapping[meta.matched_hub_ad] || null;
+}
+
+function renderDataTable() {
+  const tbody = document.getElementById('data-table-body');
+  if (!tbody) return;
+  
+  // Compute perf for each ad
+  const enriched = META_ADS_FULL.map(m => ({
+    meta: m,
+    perf: computeMetaAdPerf(m),
+    video: getVideoForMetaAd(m)
+  }));
+  
+  // Filter by search
+  const search = tableState.search.toLowerCase().trim();
+  let filtered = enriched;
+  if (search) {
+    filtered = enriched.filter(x =>
+      x.meta.meta_ad_name.toLowerCase().includes(search) ||
+      (x.meta.matched_hub_ad && x.meta.matched_hub_ad.toLowerCase().includes(search)) ||
+      (x.video && x.video.toLowerCase().includes(search))
+    );
+  }
+  
+  // Sort
+  const dir = tableState.sortDir === 'asc' ? 1 : -1;
+  const key = tableState.sortKey;
+  filtered.sort((a, b) => {
+    if (key === 'name') {
+      return dir * a.meta.meta_ad_name.localeCompare(b.meta.meta_ad_name);
+    }
+    const av = a.perf ? (a.perf[key] || 0) : 0;
+    const bv = b.perf ? (b.perf[key] || 0) : 0;
+    // For CPP, treat 0 as worst (push to end)
+    if (key === 'cpp') {
+      const aa = av === 0 ? (dir > 0 ? 999999 : -1) : av;
+      const bb = bv === 0 ? (dir > 0 ? 999999 : -1) : bv;
+      return dir * (aa - bb);
+    }
+    return dir * (av - bv);
+  });
+  
+  // Update meta info
+  document.getElementById('table-row-count').textContent = filtered.length;
+  document.getElementById('table-date-range').textContent = state.dateStart + ' → ' + state.dateEnd;
+  document.getElementById('table-linked-count').textContent = enriched.filter(x => x.video).length;
+  document.getElementById('table-unlinked-count').textContent = enriched.filter(x => !x.video).length;
+  // Show override count if any
+  const overrideCount = Object.keys(getUserOverrides()).length;
+  const overrideEl = document.getElementById('table-overrides-count');
+  if (overrideEl) {
+    overrideEl.textContent = overrideCount > 0 ? ' · ⚠ ' + overrideCount + ' local override(s) active' : '';
+  }
+  
+  // Update sort indicators
+  document.querySelectorAll('.data-table th.sortable').forEach(th => {
+    th.classList.remove('sort-active');
+    const ind = th.querySelector('.sort-indicator');
+    if (ind) ind.textContent = '';
+    if (th.dataset.sort === key) {
+      th.classList.add('sort-active');
+      if (ind) ind.textContent = dir > 0 ? '↑' : '↓';
+    }
+  });
+  
+  // Render rows
+  const base = getVideoBase();
+  const rows = filtered.map(x => {
+    const m = x.meta;
+    const p = x.perf;
+    const video = x.video;
+    
+    let videoCell;
+    if (video) {
+      const url = base + encodeURIComponent(video);
+      videoCell = '<div class="tbl-video-thumb" data-meta="' + escapeHtml(m.meta_ad_name) + '">' +
+        '<video muted loop playsinline preload="metadata" src="' + escapeHtml(url) + '"></video>' +
+        '</div>' +
+        '<div class="tbl-inline-edit">' +
+        '<input type="text" value="' + escapeHtml(video) + '" data-meta="' + escapeHtml(m.meta_ad_name) + '" data-original="' + escapeHtml(video) + '" placeholder="R2 filename..." />' +
+        '</div>';
+    } else {
+      videoCell = '<div class="tbl-video-thumb no-video">No<br>video</div>' +
+        '<div class="tbl-inline-edit">' +
+        '<input type="text" value="" data-meta="' + escapeHtml(m.meta_ad_name) + '" data-original="" placeholder="R2 filename..." />' +
+        '</div>';
+    }
+    
+    const hubTag = m.matched_hub_ad
+      ? '<span class="hub-tag">→ ' + escapeHtml(m.matched_hub_ad.split('_').slice(-1)[0] || m.matched_hub_ad) + '</span>'
+      : '<span class="hub-tag unlinked-tag">⚠ No hub creative matched</span>';
+    
+    const editBtnClass = video ? 'tbl-edit-btn' : 'tbl-edit-btn add-video';
+    const editBtnText = video ? 'Edit' : '+ Add';
+    
+    return '<tr class="' + (video ? '' : 'unlinked') + '">' +
+      '<td class="tbl-video-cell">' + videoCell + '</td>' +
+      '<td class="col-name">' + escapeHtml(m.meta_ad_name) + hubTag + '</td>' +
+      '<td class="col-num' + (p && p.has_data ? '' : ' muted') + '">' + (p && p.spend ? '€' + Math.round(p.spend).toLocaleString() : '—') + '</td>' +
+      '<td class="col-num' + (p && p.purchases ? '' : ' muted') + '">' + (p && p.purchases ? p.purchases : '—') + '</td>' +
+      '<td class="col-num' + (p && p.roas ? '' : ' muted') + '">' + (p && p.roas ? p.roas.toFixed(2) + '×' : '—') + '</td>' +
+      '<td class="col-num' + (p && p.cpp ? '' : ' muted') + '">' + (p && p.cpp ? '€' + p.cpp.toFixed(2) : '—') + '</td>' +
+      '<td class="col-num' + (p && p.ctr ? '' : ' muted') + '">' + (p && p.ctr ? p.ctr.toFixed(2) + '%' : '—') + '</td>' +
+      '<td class="col-num' + (p && p.hook_rate ? '' : ' muted') + '">' + (p && p.hook_rate ? p.hook_rate.toFixed(1) + '%' : '—') + '</td>' +
+      '<td class="col-num' + (p && p.views ? '' : ' muted') + '">' + (p && p.views ? Math.round(p.views).toLocaleString() : '—') + '</td>' +
+      '<td class="col-num' + (p && p.cpv ? '' : ' muted') + '">' + (p && p.cpv ? '€' + p.cpv.toFixed(3) : '—') + '</td>' +
+      '<td class="col-num' + (p && p.clicks ? '' : ' muted') + '">' + (p && p.clicks ? Math.round(p.clicks).toLocaleString() : '—') + '</td>' +
+      '<td class="col-num' + (p && p.cpc ? '' : ' muted') + '">' + (p && p.cpc ? '€' + p.cpc.toFixed(2) : '—') + '</td>' +
+      '<td class="col-num' + (p && p.follows ? '' : ' muted') + '">' + (p && p.follows ? Math.round(p.follows).toLocaleString() : '—') + '</td>' +
+      '<td class="col-action"><button class="' + editBtnClass + '" data-meta="' + escapeHtml(m.meta_ad_name) + '">' + editBtnText + '</button></td>' +
+      '</tr>';
+  });
+  
+  tbody.innerHTML = rows.join('');
+  
+  // Wire up inline edit inputs
+  tbody.querySelectorAll('.tbl-inline-edit input').forEach(input => {
+    input.addEventListener('input', (e) => {
+      const isChanged = e.target.value !== e.target.dataset.original;
+      e.target.classList.toggle('changed', isChanged);
+    });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        saveInlineEdit(e.target);
+      } else if (e.key === 'Escape') {
+        e.target.value = e.target.dataset.original;
+        e.target.classList.remove('changed');
+      }
+    });
+    input.addEventListener('blur', (e) => {
+      if (e.target.value !== e.target.dataset.original) {
+        saveInlineEdit(e.target);
+      }
+    });
+  });
+  
+  // Wire up edit buttons
+  tbody.querySelectorAll('.tbl-edit-btn').forEach(btn => {
+    btn.onclick = () => openEditVideoModal(btn.dataset.meta);
+  });
+  
+  // Hover-to-play videos
+  tbody.querySelectorAll('.tbl-video-thumb video').forEach(v => {
+    const thumb = v.parentElement;
+    thumb.onmouseenter = () => v.play().catch(()=>{});
+    thumb.onmouseleave = () => { v.pause(); v.currentTime = 0; };
+  });
+}
+
+function saveInlineEdit(inputEl) {
+  const metaAdName = inputEl.dataset.meta;
+  const newFilename = inputEl.value.trim();
+  // Find the matched hub ad for this meta ad
+  const meta = META_ADS_FULL.find(m => m.meta_ad_name === metaAdName);
+  if (!meta) return;
+  if (!meta.matched_hub_ad) {
+    alert("This Meta ad isn't matched to any hub creative — can't save mapping. Use the Edit modal to associate it manually.");
+    inputEl.value = inputEl.dataset.original;
+    inputEl.classList.remove('changed');
+    return;
+  }
+  // Save mapping override (keyed by hub ad name)
+  setVideoOverride(meta.matched_hub_ad, newFilename);
+  inputEl.dataset.original = newFilename;
+  inputEl.classList.remove('changed');
+  // Re-render to refresh the video thumb
+  renderDataTable();
+}
+
+function openEditVideoModal(metaAdName) {
+  const meta = META_ADS_FULL.find(m => m.meta_ad_name === metaAdName);
+  if (!meta) return;
+  const currentVideo = getVideoForMetaAd(meta);
+  const base = getVideoBase();
+  
+  const modal = document.getElementById('edit-video-modal');
+  const body = document.getElementById('edit-video-modal-body');
+  
+  const previewHtml = currentVideo
+    ? '<video muted loop autoplay playsinline src="' + escapeHtml(base + encodeURIComponent(currentVideo)) + '"></video>'
+    : '<div style="text-align:center;padding:20px;">No video<br>linked yet</div>';
+  
+  const matchedHubInfo = meta.matched_hub_ad
+    ? '<div class="modal-help"><strong>Matched hub creative:</strong><br><code style="font-size:10px;">' + escapeHtml(meta.matched_hub_ad) + '</code></div>'
+    : '<div class="modal-help" style="color:#9c5832;"><strong>⚠ No matched hub creative.</strong> The video mapping is stored against the hub ad name. Without a hub match this Meta ad cannot be linked to a video. Add this ad to the Hub Sheet first, then refresh.</div>';
+  
+  body.innerHTML =
+    '<h3>Edit video link</h3>' +
+    '<div class="modal-subtitle">' + escapeHtml(metaAdName) + '</div>' +
+    '<div class="modal-preview">' + previewHtml + '</div>' +
+    matchedHubInfo +
+    '<label>R2 Filename</label>' +
+    '<input type="text" id="edit-video-filename" value="' + escapeHtml(currentVideo || '') + '" placeholder="e.g. Brand Story x Sarah.MOV" ' + (meta.matched_hub_ad ? '' : 'disabled') + ' />' +
+    '<div class="modal-help">Type the exact filename as it appears in the R2 bucket (case-sensitive — <code>.MOV</code> ≠ <code>.mov</code>).</div>' +
+    '<div class="modal-actions">' +
+      '<button class="btn-cancel" id="edit-video-cancel">Cancel</button>' +
+      (currentVideo ? '<button class="btn-clear" id="edit-video-clear">Clear link</button>' : '') +
+      '<button class="btn-save" id="edit-video-save"' + (meta.matched_hub_ad ? '' : ' disabled') + '>Save</button>' +
+    '</div>';
+  
+  modal.classList.add('open');
+  
+  // Update preview as user types
+  const filenameInput = document.getElementById('edit-video-filename');
+  const previewBox = body.querySelector('.modal-preview');
+  filenameInput.addEventListener('input', () => {
+    const val = filenameInput.value.trim();
+    if (val) {
+      previewBox.innerHTML = '<video muted loop autoplay playsinline src="' + escapeHtml(base + encodeURIComponent(val)) + '"></video>';
+    } else {
+      previewBox.innerHTML = '<div style="text-align:center;padding:20px;">No video<br>linked yet</div>';
+    }
+  });
+  
+  document.getElementById('edit-video-cancel').onclick = closeEditVideoModal;
+  document.getElementById('edit-video-save').onclick = () => {
+    if (!meta.matched_hub_ad) return;
+    const val = filenameInput.value.trim();
+    setVideoOverride(meta.matched_hub_ad, val);
+    closeEditVideoModal();
+    renderDataTable();
+    if (typeof render === 'function') render();
+  };
+  const clearBtn = document.getElementById('edit-video-clear');
+  if (clearBtn) {
+    clearBtn.onclick = () => {
+      if (!meta.matched_hub_ad) return;
+      setVideoOverride(meta.matched_hub_ad, '');
+      closeEditVideoModal();
+      renderDataTable();
+      if (typeof render === 'function') render();
+    };
+  }
+}
+
+function closeEditVideoModal() {
+  document.getElementById('edit-video-modal').classList.remove('open');
+}
+
+document.getElementById('edit-video-modal-close').onclick = closeEditVideoModal;
+document.getElementById('edit-video-modal').onclick = (e) => {
+  if (e.target.id === 'edit-video-modal') closeEditVideoModal();
+};
+
+// Search input
+document.getElementById('table-search').addEventListener('input', (e) => {
+  tableState.search = e.target.value;
+  renderDataTable();
+});
+
+// Column header sort
+document.querySelectorAll('.data-table th.sortable').forEach(th => {
+  th.onclick = () => {
+    const newKey = th.dataset.sort;
+    if (tableState.sortKey === newKey) {
+      tableState.sortDir = tableState.sortDir === 'asc' ? 'desc' : 'asc';
+    } else {
+      tableState.sortKey = newKey;
+      tableState.sortDir = (newKey === 'name') ? 'asc' : 'desc';
+    }
+    renderDataTable();
+  };
+});
+
+// Export CSV
+document.getElementById('table-export-csv').onclick = () => {
+  const enriched = META_ADS_FULL.map(m => ({
+    meta: m,
+    perf: computeMetaAdPerf(m),
+    video: getVideoForMetaAd(m)
+  }));
+  const headers = ['Meta Ad Name','Matched Hub Ad','Linked Video','Spend','Purchases','ROAS','CPP','CTR','Hook Rate','Video Views','Cost per View','Link Clicks','Cost per Click','Follows'];
+  const rows = enriched.map(x => {
+    const p = x.perf;
+    return [
+      x.meta.meta_ad_name,
+      x.meta.matched_hub_ad || '',
+      x.video || '',
+      p ? p.spend.toFixed(2) : '',
+      p ? p.purchases : '',
+      p ? p.roas.toFixed(4) : '',
+      p ? p.cpp.toFixed(2) : '',
+      p ? p.ctr.toFixed(4) : '',
+      p ? p.hook_rate.toFixed(4) : '',
+      p ? p.views : '',
+      p ? p.cpv.toFixed(4) : '',
+      p ? p.clicks : '',
+      p ? p.cpc.toFixed(2) : '',
+      p ? p.follows : '',
+    ].map(v => '"' + String(v).replace(/"/g,'""') + '"').join(',');
+  });
+  const csv = headers.join(',') + '\n' + rows.join('\n');
+  const blob = new Blob([csv], {type: 'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'herology_meta_ads_' + state.dateStart + '_to_' + state.dateEnd + '.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+};
+
+// Reset all localStorage video overrides → restore baked-in defaults
+document.getElementById('table-reset-overrides').onclick = () => {
+  const overrides = getUserOverrides();
+  const overrideCount = Object.keys(overrides).length;
+  if (overrideCount === 0) {
+    alert("No local overrides to reset — you're already on the baked-in mappings.");
+    return;
+  }
+  const confirmed = confirm(
+    "This will clear " + overrideCount + " locally-saved video mapping override(s) " +
+    "and restore the baked-in defaults shipped with the dashboard. " +
+    "\n\nNote: this only affects YOUR browser. The dashboard file itself is unchanged. " +
+    "\n\nContinue?"
+  );
+  if (!confirmed) return;
+  try {
+    localStorage.removeItem("herology_video_mapping");
+  } catch (e) {}
+  alert("✓ Cleared " + overrideCount + " overrides. Reloading dashboard...");
+  location.reload();
+};
+
+document.getElementById("search-input").addEventListener("input", e => { state.search = e.target.value; render(); });
+document.querySelectorAll("#status-filters .pill").forEach(p => {
+  p.onclick = () => { state.status = p.dataset.status; buildFilterPills(); render(); };
+});
+const RANGE_KEYS = {'spend-min':'spendMin','spend-max':'spendMax','roas-min':'roasMin','roas-max':'roasMax','days-min':'daysMin','days-max':'daysMax'};
+Object.keys(RANGE_KEYS).forEach(id => {
+  document.getElementById(id).addEventListener("input", e => {
+    state[RANGE_KEYS[id]] = e.target.value === "" ? null : parseFloat(e.target.value);
+    render();
+  });
+});
+document.getElementById("sort-select").addEventListener("change", e => { state.sort = e.target.value; render(); });
+document.querySelectorAll("#metric-toggle .metric-toggle-btn").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll("#metric-toggle .metric-toggle-btn").forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+    state.metric = b.dataset.metric;
+    render();
+  };
+});
+document.getElementById("reset-btn").onclick = () => {
+  state.search = ""; state.status = "live";
+  state.products.clear(); state.types.clear(); state.themes.clear(); state.campaigns.clear();
+  state.spendMin = state.spendMax = state.roasMin = state.roasMax = state.daysMin = state.daysMax = null;
+  state.dateStart = (LATEST_DATE.slice(0, 8) + "01" < EARLIEST_DATE) ? EARLIEST_DATE : LATEST_DATE.slice(0, 8) + "01"; state.dateEnd = LATEST_DATE;
+  document.getElementById("search-input").value = "";
+  document.getElementById("date-start").value = state.dateStart;
+  document.getElementById("date-end").value = LATEST_DATE;
+  document.querySelectorAll(".date-preset").forEach(p => p.classList.remove("active"));
+  document.querySelector(".date-preset[data-preset='mtd']").classList.add("active");
+  Object.keys(RANGE_KEYS).forEach(id => document.getElementById(id).value = "");
+  buildFilterPills(); updateCampaignButton(); updateDateMeta(); render();
+};
+
+const mappingFileInput = document.createElement("input");
+mappingFileInput.type = "file"; mappingFileInput.accept = ".csv,.txt"; mappingFileInput.style.display = "none";
+document.body.appendChild(mappingFileInput);
+
+function parseCSV(text) {
+  if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
+  const rows = [];
+  let i = 0, field = "", row = [], inQuotes = false;
+  while (i < text.length) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"' && text[i+1] === '"') { field += '"'; i += 2; continue; }
+      if (c === '"') { inQuotes = false; i++; continue; }
+      field += c; i++;
+    } else {
+      if (c === '"') { inQuotes = true; i++; continue; }
+      if (c === ',') { row.push(field); field = ""; i++; continue; }
+      if (c === '\n' || c === '\r') {
+        if (c === '\r' && text[i+1] === '\n') i++;
+        row.push(field); field = "";
+        if (row.length > 1 || row[0]) rows.push(row);
+        row = []; i++; continue;
+      }
+      field += c; i++;
+    }
+  }
+  if (field || row.length) { row.push(field); rows.push(row); }
+  if (rows.length < 2) throw new Error("CSV appears empty");
+  const headers = rows[0];
+  return rows.slice(1).map(r => {
+    const o = {};
+    headers.forEach((h, idx) => o[h] = r[idx] || "");
+    return o;
+  });
+}
+
+function autoMatchFilenames(filenames) {
+  function norm(s) { return s.toLowerCase().replace(/\.[a-z0-9]+$/, '').replace(/[^a-z0-9]/g, ''); }
+  function similarity(a, b) {
+    if (a === b) return 1;
+    if (!a || !b) return 0;
+    const setA = new Set(); for (let i = 0; i < a.length - 1; i++) setA.add(a.substr(i, 2));
+    const setB = new Set(); for (let i = 0; i < b.length - 1; i++) setB.add(b.substr(i, 2));
+    let inter = 0; setA.forEach(x => { if (setB.has(x)) inter++; });
+    return (2 * inter) / (setA.size + setB.size);
+  }
+  const adNames = RAW_CARDS.filter(c => c.ad_type === 'VID' || c.ad_type === 'GIF').map(c => c.ad_name);
+  const map = {};
+  let exact = 0, fuzzy = 0;
+  filenames.forEach(fn => {
+    const fnNorm = norm(fn);
+    let best = null, bestScore = 0;
+    adNames.forEach(ad => {
+      const s = similarity(fnNorm, norm(ad));
+      if (s > bestScore) { bestScore = s; best = ad; }
+    });
+    if (bestScore >= 0.95) { map[best] = fn; exact++; }
+    else if (bestScore >= 0.55) { map[best] = fn; fuzzy++; }
+  });
+  return { map, exact, fuzzy, total: filenames.length };
+}
+
+document.getElementById("upload-mapping-btn").onclick = () => {
+  const current = getVideoMapping();
+  const count = Object.keys(current).length;
+  const choice = prompt(
+    "Video Filename Tools\n\nCurrently saved: " + count + " mappings\n\nType one of:\n" +
+    "  list   — paste R2 filenames (one per line) and auto-match to ad names\n" +
+    "  upload — upload a 2-column CSV (Ad Name, Video Filename)\n" +
+    "  export — download current mappings as CSV\n" +
+    "  clear  — wipe all mappings",
+    'list'
+  );
+  if (!choice) return;
+  const action = choice.trim().toLowerCase();
+  if (action === 'list') {
+    const txt = prompt("Paste R2 filenames here (one per line, including extensions like .mp4):\n\nWe'll fuzzy-match each one to a creative in your hub.", '');
+    if (!txt) return;
+    const filenames = txt.split('\n').map(l => l.trim()).filter(l => l);
+    if (filenames.length === 0) { alert("No filenames pasted."); return; }
+    const result = autoMatchFilenames(filenames);
+    setVideoMapping(Object.assign(getVideoMapping(), result.map));
+    alert("✓ Matched " + result.exact + " exact + " + result.fuzzy + " fuzzy out of " + result.total + " filenames.");
+    render();
+  } else if (action === 'upload') {
+    mappingFileInput.click();
+  } else if (action === 'export') {
+    if (count === 0) { alert("No mappings to export."); return; }
+    let csv = "Ad Name,Video Filename\n";
+    Object.entries(current).forEach(([ad, fn]) => {
+      csv += '"' + ad.replace(/"/g, '""') + '","' + fn.replace(/"/g, '""') + '"\n';
+    });
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'herology_video_mapping.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  } else if (action === 'clear') {
+    if (confirm("Clear all " + count + " mappings?")) {
+      localStorage.removeItem("herology_video_mapping");
+      alert("Cleared.");
+      render();
+    }
+  }
+};
+mappingFileInput.onchange = (e) => {
+  if (e.target.files.length === 0) return;
+  const reader = new FileReader();
+  reader.onload = (evt) => {
+    try {
+      const rows = parseCSV(evt.target.result);
+      const headers = Object.keys(rows[0]);
+      const adKey = headers.find(h => /^ad\s*name$/i.test(h.trim()));
+      const fnKey = headers.find(h => /^video\s*filename$/i.test(h.trim()));
+      if (!adKey) throw new Error("CSV missing 'Ad Name' column");
+      if (!fnKey) throw new Error("CSV missing 'Video Filename' column");
+      const map = getVideoMapping();
+      let mapped = 0;
+      rows.forEach(r => {
+        const ad = (r[adKey] || '').trim();
+        const fn = (r[fnKey] || '').trim();
+        if (ad && fn) { map[ad] = fn; mapped++; }
+      });
+      setVideoMapping(map);
+      alert("✓ Loaded " + mapped + " mappings.");
+      render();
+    } catch (err) { alert("Error: " + err.message); }
+    mappingFileInput.value = '';
+  };
+  reader.readAsText(e.target.files[0]);
+};
+
+
+document.getElementById("date-start").value = state.dateStart;
+document.getElementById("date-end").value = state.dateEnd;
+document.getElementById("date-start").min = EARLIEST_DATE;
+document.getElementById("date-start").max = LATEST_DATE;
+document.getElementById("date-end").min = EARLIEST_DATE;
+document.getElementById("date-end").max = LATEST_DATE;
+buildFilterPills();
+updateCampaignButton();
+updateDateMeta();
+render();
+updateCompareBar();
+</script>
+</body>
+</html>
