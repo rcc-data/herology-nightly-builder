@@ -324,3 +324,15 @@ report_integrated_get caps at 1000 rows/page; a month can exceed it (Oct 2026: 1
   `bash Downloads/_push_to_github.command </dev/null` and `bash "Meta Ads/push_to_github.command" </dev/null` from device_bash; both must print SUCCESS.
   (The GitHub MCP connector is not viable: it needs the file content passed inline, and the pages are 2–18 MB.)
   The Creative Hub script leaves a `.payload.*.json` in Meta Ads when deletion isn't granted. Harmless, or request delete for that folder.
+
+## 2026-11-07 — HOW THE CLOUD RUN PUBLISHES (overrides every publish step above)
+The scheduled cloud task can push ONLY to this repo (scheduled sessions get a fixed repo scope and no add_repo;
+that caused the 403s on 6 and 7 Nov). So it never pushes to the live Pages repos:
+1. `bash publish.sh --dist` force-pushes the built pages, as one commit with no history, to branch **`dist`** here:
+   `live-creative/{index.html,tiktok.html,MANIFEST.json}` and `meta-ads/{index.html,MANIFEST.json}`.
+2. `.github/workflows/pull-nightly.yml` in **rcc-data/herology-live-creative** and **rcc-data/herology-meta-ads**
+   runs at :07/:27/:47 every hour, clones `dist` (public, no token), refuses files <200 KB or missing `</html>`,
+   commits only if the pages changed, and pushes with the repo's own GITHUB_TOKEN. Pages redeploys from that push.
+3. Backstop: Ryan's chat runs a 9:45pm PT check (send_later chain "Herology 9:45pm dashboard check"); if dist or the
+   live repos didn't update, it publishes from the chat (which has push access to all three repos).
+`publish.sh --live` still works from an interactive chat that has added the live repos with push access.
