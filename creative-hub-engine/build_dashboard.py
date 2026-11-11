@@ -610,7 +610,8 @@ def build(meta_csv, hub_csv, output_path, template_path, mapping_path, logo_path
                 'text-decoration:none;%s">%s</a>' % (href, st, label))
     nav = ('<div id="platform-nav" style="display:flex;justify-content:center;gap:6px;padding:10px 16px;background:#fff;'
            'border-bottom:1px solid rgba(89,84,164,.15);position:sticky;top:0;z-index:1000;">'
-           + _tab('Meta', 'index.html', 'meta') + _tab('TikTok', 'tiktok.html', 'tiktok') + '</div>')
+           + _tab('Meta', 'index.html', 'meta') + _tab('TikTok', 'tiktok.html', 'tiktok')
+           + _tab('Discovery', 'discovery/', 'discovery') + '</div>')
     html = html.replace('<body>', '<body>' + nav, 1)
     if platform == 'tiktok':
         html = html.replace('Herology Performance</span>', 'Herology Performance · TikTok</span>', 1)
